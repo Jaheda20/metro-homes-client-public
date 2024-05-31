@@ -4,6 +4,7 @@ import {
 import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Login from "../Pages/Login/Login";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "/login",
+        element: <Login></Login>
+    }
 ]);
 
 export default router;

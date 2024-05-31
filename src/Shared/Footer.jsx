@@ -79,7 +79,7 @@ const Footer = () => {
             </div>
             
             <div>
-                <p className="">Copyright © 2024 - JobVista |  info@metrohomes.se | 013-010 55 00</p>
+                <p className="">Copyright © 2024 - Metro Homes |  info@metrohomes.se | 013-010 55 00</p>
             </div>
 
            
