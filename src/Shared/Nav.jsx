@@ -1,13 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '/logo.png'
+import useAuth from '../Hooks/useAuth';
+import { TbLogout } from 'react-icons/tb';
+import { FaHouseUser } from 'react-icons/fa';
+import defaultUser from '../assets/images/user.png'
 
 
 const Nav = () => {
 
+    const { user, logOut } = useAuth();
     const navLinks = <>
-        <li><NavLink to="/">Home</NavLink> </li>
-        <li><NavLink to="/allProperties">All Properties</NavLink> </li>
-        <li><NavLink to="/dashboard">Dashboard</NavLink> </li>
+        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/">Home</NavLink> </li>
+        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/allProperties">All Properties</NavLink> </li>
+        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/dashboard">Dashboard</NavLink> </li>
 
     </>
 
@@ -35,9 +40,33 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login">
-                        <button className="btn btn-xs sm:btn-sm md:btn-md bg-blue-600 text-white">Login</button>
-                    </Link>
+                    {
+                        user ?
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-left" data-tip={user?.displayName || 'Unknown User'}>
+                                    <div className="w-10 rounded-full " >
+                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} />
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li>
+                                        <a>
+                                        <FaHouseUser />
+                                            Profile
+                                            
+                                        </a>
+                                    </li>
+                                    <li><a onClick={logOut}><TbLogout /> Logout</a></li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            :
+                            <Link to="/login">
+                                <button className="btn btn-xs sm:btn-sm md:btn-md bg-blue-600 text-white">Login</button>
+                            </Link>
+                    }
+
 
                 </div>
             </div>
