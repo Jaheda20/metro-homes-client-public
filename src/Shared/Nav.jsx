@@ -18,7 +18,7 @@ const Nav = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 mt-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,13 +42,11 @@ const Nav = () => {
                 <div className="navbar-end">
                     {
                         user ?
-                            <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-left" data-tip={user?.displayName || 'Unknown User'}>
-                                    <div className="w-10 rounded-full " >
-                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} />
-                                    </div>
+                        <div className="dropdown dropdown-bottom dropdown-end flex items-center gap-4">
+                                <div tabIndex={0} className="hover:underline">
+                                <p>{user?.displayName || 'Unknown User'}</p>
                                 </div>
-                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                     <li>
                                         <a>
                                         <FaHouseUser />
@@ -59,7 +57,33 @@ const Nav = () => {
                                     <li><a onClick={logOut}><TbLogout /> Logout</a></li>
                                     
                                 </ul>
+                                <div className=" " >
+                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} className='w-10 h-10 rounded-full' />
+                                    </div>
+                                
                             </div>
+                        
+                            // <div className="dropdown dropdown-end flex items-center">
+                                
+                            //     <p>{user?.displayName || 'Unknown User'}</p>
+                            //     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    
+                            //         <div className="w-10 rounded-full " >
+                            //             <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} />
+                            //         </div>
+                            //     </div>
+                            //     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                            //         <li>
+                            //             <a>
+                            //             <FaHouseUser />
+                            //                 Profile
+                                            
+                            //             </a>
+                            //         </li>
+                            //         <li><a onClick={logOut}><TbLogout /> Logout</a></li>
+                                    
+                            //     </ul>
+                            // </div>
                             
                             :
                             <Link to="/login">
