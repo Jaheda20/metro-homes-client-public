@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -75,13 +76,14 @@ const Login = () => {
                         <p className="px-3 text-sm dark:text-gray-600">Login with social accounts</p>
                         <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
                     </div>
-                    <div className="flex justify-center space-x-4">
+                    {/* <div className="flex justify-center space-x-4">
                         <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 hover:bg-blue-300">
 
                             <p className="flex items-center gap-2"> <FcGoogle size={20}/>
                                 Login with Google</p>
                         </button>
-                    </div>
+                    </div> */}
+                    <SocialLogin></SocialLogin>
                     <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don't have an account?
                     <Link to="/signup" className="underline text-blue-800">Sign up
                     </Link>
