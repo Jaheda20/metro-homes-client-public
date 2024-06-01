@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const LoginReminder = () => {
     return (
-        <div className="flex flex-col md:flex-row shadow-xl mt-10 mb-28 rounded-xl p-8 bg-gray-50">
+        <div className="flex flex-col md:flex-row shadow-xl mt-6 mb-28 rounded-xl p-8 bg-gray-50">
             <div className="md:w-2/3">
                 <img src="https://i.ibb.co/p3VVZLf/woman-working-on-laptop-computer.jpg" alt="" />
             </div>

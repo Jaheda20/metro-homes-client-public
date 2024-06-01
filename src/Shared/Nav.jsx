@@ -13,6 +13,7 @@ const Nav = () => {
         <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/">Home</NavLink> </li>
         <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/allProperties">All Properties</NavLink> </li>
         <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/dashboard">Dashboard</NavLink> </li>
+        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/customerService">Contact</NavLink> </li>
 
     </>
 

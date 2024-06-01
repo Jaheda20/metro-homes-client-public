@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import ContactBanner from "./ContactBanner";
 import ContactInfo from "./ContactInfo";
 import LoginReminder from "./LoginReminder";
@@ -7,7 +8,10 @@ const CustomerService = () => {
         <div className="flex flex-col items-center justify-center">
             <ContactBanner></ContactBanner>
             <ContactInfo></ContactInfo>
-            <LoginReminder></LoginReminder>
+            <Fade delay={500}>
+                <LoginReminder></LoginReminder>
+            </Fade>
+
         </div>
     );
 };
