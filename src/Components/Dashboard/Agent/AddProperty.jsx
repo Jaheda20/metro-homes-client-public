@@ -1,14 +1,36 @@
 import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import AddPropertyForm from "../../Form/AddPropertyForm";
 import { imageUpload } from "../../../api/utils";
 import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+import { axiosPublic } from "../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddProperty = () => {
     const { user } = useAuth();
     const [loading, setLoading] = useState(false);
     const [imageText, setImageText] = useState('Upload Image');
     const [imagePreview, setImagePreview] = useState();
+    const navigate = useNavigate();
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async propertyData =>{
+            const {data} = await axiosPublic.post('/property', propertyData)
+            return data;
+        },
+        onSuccess: () =>{
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Property has been added",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              navigate('/dashboard/myAddedProperties')
+              setLoading(false)
+        }
+    })
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -34,6 +56,7 @@ const AddProperty = () => {
                 title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent
             }
             console.log(propertyData)
+            await mutateAsync(propertyData)
         }
         catch (err) {
             console.log(err)
