@@ -3,25 +3,15 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Map from "../../Components/Map/Map";
 import { FiMapPin } from "react-icons/fi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllProperties = () => {
 
     const axiosPublic = useAxiosPublic();
-    const [search, setSearch] = useState('')
-    const [searchText, setSearchText] = useState('')
+    const [search, setSearch] = useState('');
+    const [searchText, setSearchText] = useState('');
 
-    // const getData = async() => {
-    //     const {data} = await axiosPublic.get(`/properties?search=${search}`)
-    //     return data
-    // }
-    
-    // const { data: properties = [], isLoading, refetch } = useQuery({
-    //     queryKey: ['properties', {search}],
-    //     queryFn: async () => {
-    //         const { data } = await axiosPublic.get(`/properties?search=${search}`)
-    //         return data 
-    //     }
-    // })
+
     const getData = async () => {
         const { data } = await axiosPublic.get(`/properties?search=${search}`);
         return data;
@@ -30,11 +20,10 @@ const AllProperties = () => {
     const { data: properties = [], isLoading, refetch } = useQuery({
         queryKey: ['properties', { search }],
         queryFn: getData,
-        enabled: true
+        
     });
 
     
-
     if (isLoading) return (
         <div className="flex items-center justify-center text-7xl my-40">
             <span className="loading loading-bars loading-lg"></span>
@@ -93,7 +82,9 @@ const AllProperties = () => {
                                         </div>
                                     </div>
                                     <div className="card-actions justify-end">
+                                        <Link to={`/property/${property._id}`}>
                                         <button className="btn border-blue-700 text-blue-700 font-semibold rounded-3xl px-8">Details</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

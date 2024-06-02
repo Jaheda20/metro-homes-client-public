@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const Advertisement = () => {
     const axiosPublic = useAxiosPublic();
@@ -37,7 +38,9 @@ const Advertisement = () => {
                                 <p>Verification Status: </p>
 
                                 <div className="card-actions justify-end">
-                                    <button className="btn rounded-3xl px-8 border-blue-700 text-blue-700 font-bold mt-6">Details</button>
+                                    <Link to={`/property/${property._id}`}>
+                                        <button className="btn border-blue-700 text-blue-700 font-semibold rounded-3xl px-8">Details</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

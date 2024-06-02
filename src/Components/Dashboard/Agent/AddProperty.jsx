@@ -44,6 +44,7 @@ const AddProperty = () => {
         const max_price = form.maxPrice.value;
         const bedrooms = form.bedrooms.value;
         const bathrooms = form.bathrooms.value;
+        const description = form.description.value;
         const image = form.image.files[0];
 
         const agent = {
@@ -55,7 +56,7 @@ const AddProperty = () => {
         try {
             const image_url = await imageUpload(image)
             const propertyData = {
-                title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent, latitude, longitude
+                title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent, latitude, longitude, description
             }
             console.log(propertyData)
             await mutateAsync(propertyData)

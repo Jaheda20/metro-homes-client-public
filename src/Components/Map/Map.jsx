@@ -13,12 +13,7 @@ const Map = ({properties}) => {
             />
             <Pin properties={properties} ></Pin>
            
-            {/* <Marker position={[60.1282, 18.6435]
-            }>
-                <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker> */}
+            
         </MapContainer>
     )
 };
