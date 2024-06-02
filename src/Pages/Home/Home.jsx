@@ -1,3 +1,4 @@
+import Advertisement from "./Advertisement";
 import Banner from "./Banner";
 import Contact from "./Contact";
 import FAQ from "./FAQ";
@@ -9,6 +10,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Info></Info>
+            <Advertisement></Advertisement>
             <Contact></Contact>
             
             <Testimonials></Testimonials>

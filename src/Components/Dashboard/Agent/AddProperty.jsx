@@ -83,7 +83,7 @@ const AddProperty = () => {
                                 </label>
                                 <input
                                     className='w-full px-4 py-3 text-gray-800 border border-blue-700 focus:outline-blue-500 rounded-md '
-                                    name='Title'
+                                    name='title'
                                     id='Title'
                                     type='text'
                                     placeholder='Title'
@@ -266,7 +266,7 @@ const AddProperty = () => {
                         type='submit'
                         className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-700'
                     >
-                        Save & Continue
+                        Add Property
                     </button>
                 </form>
             </div>
