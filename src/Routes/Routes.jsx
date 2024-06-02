@@ -10,6 +10,7 @@ import CustomerService from "../Components/Contact/CustomerService";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddProperty from "../Components/Dashboard/Agent/AddProperty";
 import MyAddedProperties from "../Components/Dashboard/Agent/MyAddedProperties";
+import AllProperties from "../Pages/AllProperties/AllProperties";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: "/customerService",
                 element: <CustomerService></CustomerService>
+            },
+            {
+                path: "/allProperties",
+                element: <AllProperties></AllProperties>
             }
         ]
     },

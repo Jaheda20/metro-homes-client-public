@@ -9,13 +9,11 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Info></Info>
             <Advertisement></Advertisement>
-            <Contact></Contact>
-            
+            <Info></Info>          
+            <Contact></Contact>            
             <Testimonials></Testimonials>
-            <FAQ></FAQ>
-            
+            <FAQ></FAQ>            
             <div className="w-full">
                 <hr className="w-full border-8 border-slate-500"/>
             </div>

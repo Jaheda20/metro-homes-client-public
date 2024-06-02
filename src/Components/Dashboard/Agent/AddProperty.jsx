@@ -38,6 +38,8 @@ const AddProperty = () => {
         const form = e.target;
         const title = form.title.value;
         const location = form.location.value;
+        const longitude = form.longitude.value;
+        const latitude = form.latitude.value;
         const min_price = form.minPrice.value;
         const max_price = form.maxPrice.value;
         const bedrooms = form.bedrooms.value;
@@ -53,7 +55,7 @@ const AddProperty = () => {
         try {
             const image_url = await imageUpload(image)
             const propertyData = {
-                title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent
+                title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent, latitude, longitude
             }
             console.log(propertyData)
             await mutateAsync(propertyData)
@@ -169,25 +171,39 @@ const AddProperty = () => {
                                 />
                             </div>
 
-                            {/* <div className=' p-4 bg-white w-full  m-auto rounded-lg'>
-                                <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                                    <div className='flex flex-col w-max mx-auto text-center'>
-                                        <label>
-                                            <input
-                                                className='text-sm cursor-pointer w-36 hidden'
-                                                type='file'
-                                                name='image'
-                                                id='image'
-                                                accept='image/*'
-                                                hidden
-                                            />
-                                            <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                                Upload Image
-                                            </div>
-                                        </label>
-                                    </div>
+                            <div className='flex justify-between gap-2'>
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='min price' className='block text-gray-600'>
+                                        Latitude
+                                    </label>
+                                    <input
+                                        className='w-full px-4 py-3 text-gray-800 border border-blue-700 focus:outline-blue-500 rounded-md '
+                                        name='latitude'
+                                        id='latitude'
+                                        type='number'
+                                        step='0.000001'
+                                        placeholder='Latitude'
+                                        required
+                                    />
                                 </div>
-                            </div> */}
+
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='longitude' className='block text-gray-600'>
+                                    Longitude
+                                    </label>
+                                    <input
+                                        className='w-full px-4 py-3 text-gray-800 border border-blue-700 focus:outline-blue-500 rounded-md '
+                                        name='longitude'
+                                        id='longitude'
+                                        type='number'
+                                        step='0.000001'
+                                        placeholder='Longitude'
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            
                             <div className='flex justify-between gap-2'>
                                 <div className='space-y-1 text-sm'>
                                     <label htmlFor='min price' className='block text-gray-600'>

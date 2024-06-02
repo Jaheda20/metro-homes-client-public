@@ -36,8 +36,8 @@ const Advertisement = () => {
                                 <p>Price: ${property.min_price} - ${property.max_price}</p>
                                 <p>Verification Status: </p>
 
-                                <div className="card-actions justify-center">
-                                    <button className="btn rounded-3xl px-8 border-blue-700 text-blue-700 mt-6">Details</button>
+                                <div className="card-actions justify-end">
+                                    <button className="btn rounded-3xl px-8 border-blue-700 text-blue-700 font-bold mt-6">Details</button>
                                 </div>
                             </div>
                         </div>
