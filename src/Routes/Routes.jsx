@@ -7,6 +7,9 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import CustomerService from "../Components/Contact/CustomerService";
+import DashboardLayout from "../Layout/DashboardLayout";
+import AddProperty from "../Components/Dashboard/Agent/AddProperty";
+import MyAddedProperties from "../Components/Dashboard/Agent/MyAddedProperties";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +34,20 @@ const router = createBrowserRouter([
     {
         path: "/signup",
         element: <SignUp></SignUp>
+    },
+    {
+        path: "/dashboard",
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: "addProperty",
+                element: <AddProperty></AddProperty>
+            },
+            {
+                path: "myAddedProperties",
+                element: <MyAddedProperties></MyAddedProperties>
+            }
+        ]
     }
 ]);
 

@@ -10,7 +10,8 @@ const Contact = () => {
                     <h1 className="text-4xl font-semibold mb-4">My Pages</h1>
                     <p className="text-center">On My Pages you can find everything you need as an user with us related to your accommodation, your purchase, and you can easily make a service report. </p>
 
-                    <Link to="/login" className="mt-10 underline text-blue-700 text-lg">Login Here</Link>
+                    <Link to="/login"> <button className="mt-12 btn rounded-3xl text-lg text-blue-700 border-blue-700 px-8">Login Here !</button>
+                    </Link>
                 </div>
             </div>
 
@@ -21,11 +22,11 @@ const Contact = () => {
                     <h1 className="text-4xl font-semibold mb-4">Customer Service</h1>
                     <p className="text-center">Do you want to get in touch with us at Metro Homes? You are always welcome to contact us either by phone, email, or at our office. </p>
 
-                    <Link to="/customerService" className="mt-10 underline text-blue-700 text-lg">To Customer Service</Link>
+                    <Link to="/customerService"> <button className="mt-12 btn rounded-3xl text-lg text-blue-700 border-blue-700 px-8">To Customer Service</button></Link>
                 </div>
             </div>
-            
-            
+
+
         </div>
     );
 };

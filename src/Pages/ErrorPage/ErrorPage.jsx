@@ -12,7 +12,7 @@ const ErrorPage = () => {
                 <p className="text-lg mb-8">This page does not seem to exist. Do not feel bad, let us help you to get back on your way! </p>
                 
                 <Link to="/">
-                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg border border-indigo-800 hover:bg-blue-300 hover:ease-out"> <TiArrowBack />
+                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg border border-indigo-800 text-blue-700 rounded-3xl hover:bg-blue-300 "> <TiArrowBack />
                     Head Back To Home Page</button>
                 </Link>
                  

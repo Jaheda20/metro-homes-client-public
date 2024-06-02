@@ -1,4 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
 import logo from "/logo.png"
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";

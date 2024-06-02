@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "reviewer_name": "John Doe",
+      "reviewer_profession": "Professor, Uppsala University",
+      "reviewer_image": "https://i.ibb.co/7VBCL9q/depositphotos-37034497-stock-photo-young-black-man-smiling-at.webp",
+      "description": "Metro Homes made my home buying experience seamless and enjoyable. The agents were professional and guided me through every step of the process. They took the time to understand my needs and preferences, ensuring I found the perfect home. The entire journey was stress-free, and I felt supported throughout. I highly recommend their services.",
+      "property_title": "Spacious 4-Bedroom Family Home"
+    },
+    {
+      "id": 2,
+      "reviewer_name": "Jane Smith",
+      "reviewer_profession": "Investment Banker, SEB Bank Plc.",
+      "reviewer_image": "https://i.ibb.co/7yJ4KbR/photo-1503443207922-dff7d543fd0e-q-80-w-1000-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "description": "I sold my apartment through Metro Homes and was impressed by their marketing strategy and quick sale. The team was efficient and communicative, keeping me informed at every stage. They handled all the details professionally, making the process smooth and easy. I couldn't have asked for a better experience. Highly recommend!",
+      "property_title": "Modern Downtown Apartment"
+    },
+    {
+      "id": 3,
+      "reviewer_name": "Emily Johnson",
+      "reviewer_profession": "Restaurant Manager, SushiYama",
+      "reviewer_image": "https://i.ibb.co/JvY5w81/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased.jpg",
+      "description": "Renting an apartment with Metro Homes was a breeze. They found me the perfect place in no time and the entire process was hassle-free. The agents were friendly and knowledgeable, answering all my questions promptly. I appreciated their attention to detail and commitment to customer satisfaction. Excellent service from start to finish!",
+      "property_title": "Cozy 2-Bedroom Apartment"
+    }
+  ]
+  

@@ -4,6 +4,7 @@ import useAuth from '../Hooks/useAuth';
 import { TbLogout } from 'react-icons/tb';
 import { FaHouseUser } from 'react-icons/fa';
 import defaultUser from '../assets/images/user.png'
+import { MdOutlineDashboard } from "react-icons/md";
 
 
 const Nav = () => {
@@ -55,6 +56,8 @@ const Nav = () => {
                                             
                                         </a>
                                     </li>
+                                    <li>
+                                      <Link to="/dashboard"><MdOutlineDashboard /> Dashboard</Link> </li>
                                     <li><a onClick={logOut}><TbLogout /> Logout</a></li>
                                     
                                 </ul>
