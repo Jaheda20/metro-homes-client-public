@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/property/:id",
-                element: <PropertyDetails></PropertyDetails>
+                element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>
             }
         ]
     },
@@ -50,6 +50,7 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <DashboardLayout></DashboardLayout>,
         children: [
+            
             {
                 path: "addProperty",
                 element: <AddProperty></AddProperty>

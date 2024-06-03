@@ -6,44 +6,55 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const SignUp = () => {
-
+    const axiosPublic = useAxiosPublic();
     const { signUp, setLoading, updateUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
-    const handleSignUp = async e => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const image = form.image.files[0];
-
         console.log(name, email, password, image)
+
+        // password validation
+        if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/.test(password)) {
+            toast.error('Invalid Password')
+            return;
+        }
 
         try {
             setLoading(true)
+
             const imageUrl = await imageUpload(image)
             console.log(imageUrl)
-            if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/.test(password)) {
-                toast.error('Invalid Password')
-                return;
-            }
+
             const result = await signUp(email, password)
             console.log(result)
-            
-            updateUser(name, imageUrl)
-            navigate('/')
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Your Account is created successfully",
-                showConfirmButton: false,
-                timer: 1500
-            });
+
+            const userInfo = { name, email, image }
+            const response = await axiosPublic.post('/users', userInfo)
+            if (response.data.insertedId) {
+                await updateUser(name, imageUrl)
+                navigate('/')
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your Account is created successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else {
+                toast.error('Signup failed')
+            }
+
 
         }
         catch (err) {
@@ -54,8 +65,14 @@ const SignUp = () => {
                 text: "Something went wrong!",
                 footer: '<a href="#">Why do I have this issue?</a>'
             });
+        } 
+        finally {
+            setLoading(false)
         }
+
     }
+
+
 
 
 
@@ -88,7 +105,7 @@ const SignUp = () => {
                             <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
                             <span className="absolute top-8 right-4" onClick={() => setShowPassword(!showPassword)}>
                                 {
-                                    showPassword ? <FaRegEye size={18} /> : <FaRegEyeSlash size={18} />  
+                                    showPassword ? <FaRegEye size={18} /> : <FaRegEyeSlash size={18} />
 
                                 }</span>
 
