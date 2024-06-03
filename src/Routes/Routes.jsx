@@ -13,6 +13,7 @@ import MyAddedProperties from "../Components/Dashboard/Agent/MyAddedProperties";
 import AllProperties from "../Pages/AllProperties/AllProperties";
 import PrivateRoute from "./PrivateRoute";
 import PropertyDetails from "../Components/PropertyDetails/PropertyDetails";
+import UpdateProperty from "../Components/Dashboard/Agent/UpdateProperty";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: "myAddedProperties",
                 element: <MyAddedProperties></MyAddedProperties>
+            },
+            {
+                path: "update",
+                element: <UpdateProperty></UpdateProperty>
             }
         ]
     }

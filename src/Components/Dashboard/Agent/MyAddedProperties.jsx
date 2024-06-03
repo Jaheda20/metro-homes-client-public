@@ -1,8 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { MdDelete, MdOutlineVerified } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const MyAddedProperties = () => {
 
@@ -16,13 +19,54 @@ const MyAddedProperties = () => {
         }
     })
 
+    const { mutateAsync } = useMutation({
+        mutationFn: async id => {
+            const { data } = await axiosPublic.delete(`/property/${id}`)
+            return data
+        },
+        onSuccess: data => {
+            console.log(data)
+            refetch()
+
+        }
+    })
+
+    const handleDelete = async id => {
+        console.log(id)
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+        if(result.isConfirmed){
+            try {
+                await mutateAsync(id)
+            }
+            catch (err) {
+                console.log(err)
+                toast.error(err.message)
+            }
+        }
+    }
+
+    if (isLoading)
+        return
+    <div className="flex items-center justify-center text-7xl my-40">
+        <span className="loading loading-bars loading-lg"></span>
+    </div>
+
+
     return (
         <div>
             <h2 className="text-3xl font-semibold mb-6">My listing page: <span className="bg-blue-200 p-2">{properties.length}
-                </span></h2>
+            </span></h2>
             <div className="grid md:grid-cols-3">
                 {
-                    properties.map(property => <div key={property.key}>
+                    properties.map(property => <div key={property._id}>
                         <div className="flex flex-col w-96 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
                             <div className="flex space-x-4">
                                 <img alt="" src={property.agent.image} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
@@ -39,19 +83,20 @@ const MyAddedProperties = () => {
                             <div className="flex flex-wrap justify-between">
                                 <div className="space-x-2">
                                     <button aria-label="Share this post" type="button" className="p-2 text-center">
-                                   
-                                    <p className="flex items-center gap-2 bg-blue-200 py-2 rounded-3xl px-3">  <MdOutlineVerified size={24} /> Verified?</p>
-
+                                        <p className="flex items-center gap-2 bg-blue-200 py-2 rounded-3xl px-3">  <MdOutlineVerified size={24} /> Pending....</p>
                                     </button>
-                                    
+
                                 </div>
                                 <div className="flex space-x-2 text-sm dark:text-gray-600">
-                                    <button type="button" className="flex items-center p-1 space-x-1.5">
-                                    <FaEdit size={24} />
+                                    <Link to="/dashboard/update">
+                                        <button className="btn flex items-center p-1 space-x-1.5">
+                                            <FaEdit size={24} />
+                                        </button>
 
-                                    </button>
-                                    <button type="button" className="flex items-center p-1 space-x-1.5">
-                                    <MdDelete size={24} />
+                                    </Link>
+
+                                    <button onClick={() => handleDelete(property._id)} className="flex btn items-center p-1 space-x-1.5">
+                                        <MdDelete size={24} />
 
                                     </button>
                                 </div>
