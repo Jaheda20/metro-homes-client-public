@@ -8,14 +8,15 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import CustomerService from "../Components/Contact/CustomerService";
 import DashboardLayout from "../Layout/DashboardLayout";
-import AddProperty from "../Components/Dashboard/Agent/AddProperty";
-import MyAddedProperties from "../Components/Dashboard/Agent/MyAddedProperties";
+import AddProperty from "../Pages/Dashboard/Agent/AddProperty";
+import MyAddedProperties from "../Pages/Dashboard/Agent/MyAddedProperties";
 import AllProperties from "../Pages/AllProperties/AllProperties";
 import PrivateRoute from "./PrivateRoute";
 import PropertyDetails from "../Components/PropertyDetails/PropertyDetails";
-import UpdateProperty from "../Components/Dashboard/Agent/UpdateProperty";
+import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty";
 import Profile from "../Pages/Dashboard/Common/Profile";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 
 const router = createBrowserRouter([
     {
@@ -72,7 +73,13 @@ const router = createBrowserRouter([
             },
             {
                 path: "manageUsers",
-                element: <ManageUsers></ManageUsers>
+                element: <PrivateRoute><ManageUsers></ManageUsers></PrivateRoute>
+            },
+            {
+                path: "manageProperties",
+                element: <PrivateRoute>
+                    <ManageProperties></ManageProperties>
+                </PrivateRoute>
             }
         ]
     }

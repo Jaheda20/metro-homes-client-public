@@ -10,27 +10,41 @@ import Swal from "sweetalert2";
 const UserDataRow = ({ user, refetch }) => {
 
     const [isAdmin, setIsAdmin] = useState(false);
+    const [isAgent, setIsAgent] = useState(false);
+    const [isFraud, setIsFraud] = useState(false);
+
+
     const axiosSecure = useAxiosSecure();
-    const {mutateAsync} = useMutation({
-        mutationFn: async role =>{
-            const {data} = await axiosSecure.patch(`/users/update/${user?.email}`, role)
+    const { mutateAsync } = useMutation({
+        mutationFn: async role => {
+            const { data } = await axiosSecure.patch(`/users/update/${user?.email}`, role)
             return data
         },
         onSuccess: data => {
             refetch()
             console.log(data)
             toast.success('User role updated successfully!')
-          },
+        },
     })
 
-    const handleAdmin = () =>{
-        mutateAsync({role: 'admin', status: 'verified'})
+    const handleAdmin = () => {
+        mutateAsync({ role: 'Admin', status: 'Verified' })
         setIsAdmin(true)
     }
 
-    const handleAgent = () =>{
-        mutateAsync({role: 'agent', status: 'verified'})
+    const handleAgent = () => {
+        mutateAsync({ role: 'Agent', status: 'Verified' })
+        // setIsAgent(true)
     }
+
+    const handleFraud = async () => {
+        await mutateAsync({ role: 'Fraud', status: 'Rejected', isFraud: true })
+        setIsFraud(true)
+    }
+    const onSuccess = data =>{
+        refetch()
+    }
+
 
     const handleDeleteUser = user => {
         Swal.fire({
@@ -80,22 +94,36 @@ const UserDataRow = ({ user, refetch }) => {
             </td>
             <td>
                 <div className="tooltip" data-tip="Make Admin">
-                    <button onClick={handleAdmin} disabled={isAdmin} className="btn hover:bg-blue-700 hover:text-white"><GrUserAdmin /></button>
+                    <button onClick={handleAdmin} disabled={isAdmin || user?.isFraud} className="btn hover:bg-blue-700 hover:text-white"><GrUserAdmin /></button>
                 </div>
             </td>
             <td>
                 <div className="tooltip" data-tip="Make Agent">
-                    <button onClick={handleAgent} className="btn hover:bg-blue-700 hover:text-white"><MdRealEstateAgent /></button>
+                    <button onClick={handleAgent} disabled={ isAgent || user?.isFraud} className="btn hover:bg-blue-700 hover:text-white"><MdRealEstateAgent /></button>
                 </div>
             </td>
             <td>
-                <div className="tooltip" data-tip="Fraudulent User">
-                    <button className="btn hover:bg-blue-700 hover:text-white"><TbAlien /></button>
-                </div>
+                {
+                    user?.role === 'Fraud' ? (
+                        <span className="text-red-500">
+                            <button className="btn bg-red-300"><TbAlien /></button>
+                        </span>
+                    )
+                        :
+                    (
+                        <div className="tooltip" data-tip="Fraudulent User">
+                            <button onClick={!user?.isFraud ? handleFraud: null}
+                            disabled={user?.isFraud}
+                            className="btn hover:bg-blue-700 hover:text-white"><TbAlien /></button>
+                        </div>
+                    )
+                }
+
+
             </td>
             <td>
                 <div className="tooltip" data-tip="Delete User">
-                    <button onClick={()=>handleDeleteUser(user)} className="btn hover:bg-blue-700 hover:text-white"><MdOutlineDeleteForever />
+                    <button onClick={() => handleDeleteUser(user)} className="btn hover:bg-blue-700 hover:text-white"><MdOutlineDeleteForever />
                     </button>
                 </div>
             </td>

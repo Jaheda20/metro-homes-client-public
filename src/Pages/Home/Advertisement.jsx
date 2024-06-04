@@ -28,14 +28,14 @@ const Advertisement = () => {
                         <div className="card bg-base-100 shadow-xl hover:scale-110">
                             <div className="p-4 relative h-52 mb-4">
                                 <figure><img src={property.image} alt="Shoes" className="hover:scale-110 transition" /></figure>
-                                <p className="absolute top-10 right-10 bg-white p-2 bg-opacity-80 text-black font-bold rounded-2xl">{property.location}</p>
+                                <p className="absolute top-10 right-10 bg-white p-2 bg-opacity-80 text-black font-bold px-4 rounded-2xl">{property.status}</p>
 
                             </div>
 
                             <div className="card-body">
                                 <h2 className="card-title">{property.title}</h2>
                                 <p>Price: ${property.min_price} - ${property.max_price}</p>
-                                <p>Verification Status: </p>
+                                <p className=""> {property.location} </p>
 
                                 <div className="card-actions justify-end">
                                     <Link to={`/property/${property._id}`}>

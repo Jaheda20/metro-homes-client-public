@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const AddProperty = () => {
     const { user } = useAuth();
@@ -14,6 +15,7 @@ const AddProperty = () => {
     const [imageText, setImageText] = useState('Upload Image');
     const [imagePreview, setImagePreview] = useState();
     const axiosSecure = useAxiosSecure()
+    // const axiosPublic = useAxiosPublic()
     const navigate = useNavigate();
 
     const { mutateAsync } = useMutation({
@@ -48,6 +50,7 @@ const AddProperty = () => {
         const bathrooms = form.bathrooms.value;
         const description = form.description.value;
         const image = form.image.files[0];
+        const status=form.status.value;
 
         const agent = {
             name: user?.displayName,
@@ -58,7 +61,7 @@ const AddProperty = () => {
         try {
             const image_url = await imageUpload(image)
             const propertyData = {
-                title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent, latitude, longitude, description
+                title, location, min_price, max_price, bedrooms, bathrooms, image: image_url, agent, latitude, longitude, description, status
             }
             console.log(propertyData)
             await mutateAsync(propertyData)
@@ -155,6 +158,21 @@ const AddProperty = () => {
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='verification' className='block text-gray-600'>
+                                    Verification Status
+                                </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border border-blue-700 focus:outline-blue-500 rounded-md '
+                                    name='status'
+                                    defaultValue={'Pending'}
+                                    id='verify'
+                                    type='text'
+                                    placeholder='Verification Status'
+                                    required
+                                />
                             </div>
 
 

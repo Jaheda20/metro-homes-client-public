@@ -3,7 +3,7 @@ import { GrLogout } from 'react-icons/gr'
 import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import logo from '/logo.png'
 import useRole from '../../../Hooks/useRole';
@@ -17,13 +17,21 @@ import UserMenu from './Menu/UserMenu';
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
-  const [role] = useRole()
+  const [role] = useRole();
+  const navigate = useNavigate();
   console.log(role)
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
   }
+
+  const handleLogout = () =>{
+    logOut()
+    navigate ('/')
+  }
+
+
   return (
     <>
       {/* Small Screen Navbar */}
@@ -69,24 +77,17 @@ const Sidebar = () => {
             </div>
           </div>
 
-          {/* Nav Items */}
+
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* Conditional toggle button here.. */}
-
-            {/*  Menu Items */}
             <nav>
-
               <MenuItem label={'Statistics'} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
 
-              {/* {role === 'admin' && <AdminMenu></AdminMenu> } */}
-              <AdminMenu></AdminMenu>
-              {role === 'agent' && <AgentMenu></AgentMenu>}
+              {role === 'Admin' && <AdminMenu></AdminMenu> }
+              {role === 'Agent' && <AgentMenu></AgentMenu>}
               {role === 'user' && <UserMenu></UserMenu>} 
             </nav>
           </div>
         </div>
-
-                
 
         <div>
           <hr />
@@ -96,7 +97,7 @@ const Sidebar = () => {
             address='/dashboard/profile'
             icon={IoSettingsOutline}
           />
-          <button onClick={logOut}
+          <button onClick={()=>handleLogout(logOut)}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
             <GrLogout className='w-5 h-5 text-white' />

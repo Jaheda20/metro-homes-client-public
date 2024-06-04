@@ -9,6 +9,7 @@ import { useState } from 'react';
 import AgentModal from '../Components/Modal/AgentModal';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
+import useRole from '../Hooks/useRole';
 
 
 const Nav = () => {
@@ -24,6 +25,7 @@ const Nav = () => {
     const axiosSecure = useAxiosSecure();
     const { user, logOut } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [role] = useRole();
 
     const closeModal = () => {
         setIsModalOpen(false)
@@ -48,12 +50,12 @@ const Nav = () => {
         catch (err) {
             console.log(err)
         }
-        finally{
-        closeModal()
+        finally {
+            closeModal()
         }
     }
 
-    
+
 
 
 
@@ -91,6 +93,7 @@ const Nav = () => {
                                 </div>
                                 <ul tabIndex={0} className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                     <li><Link to="/dashboard/profile"><FaHouseUser /> Profile</Link></li>
+
                                     <li><button onClick={() => setIsModalOpen(true)}><MdRealEstateAgent /> Be an Agent</button></li>
                                     <AgentModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler} />
 

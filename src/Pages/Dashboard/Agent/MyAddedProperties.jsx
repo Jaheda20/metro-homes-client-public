@@ -83,7 +83,7 @@ const MyAddedProperties = () => {
                             <div className="flex flex-wrap justify-between">
                                 <div className="space-x-2">
                                     <button aria-label="Share this post" type="button" className="p-2 text-center">
-                                        <p className="flex items-center gap-2 bg-blue-200 py-2 rounded-3xl px-3">  <MdOutlineVerified size={24} /> Pending....</p>
+                                        <p className="flex items-center gap-2 bg-blue-200 py-2 rounded-3xl px-3">  <MdOutlineVerified size={24} /> {property.status}</p>
                                     </button>
 
                                 </div>
