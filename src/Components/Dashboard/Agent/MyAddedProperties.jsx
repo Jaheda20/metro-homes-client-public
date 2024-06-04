@@ -1,27 +1,27 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { MdDelete, MdOutlineVerified } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MyAddedProperties = () => {
 
     const { user } = useAuth();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure() ;
     const { data: properties = [], isLoading, refetch } = useQuery({
         queryKey: ['my-added-properties', user?.email],
         queryFn: async () => {
-            const { data } = await axiosPublic.get(`/myAddedProperties/${user?.email}`)
+            const { data } = await axiosSecure.get(`/myAddedProperties/${user?.email}`)
             return data
         }
     })
 
     const { mutateAsync } = useMutation({
         mutationFn: async id => {
-            const { data } = await axiosPublic.delete(`/property/${id}`)
+            const { data } = await axiosSecure.delete(`/property/${id}`)
             return data
         },
         onSuccess: data => {

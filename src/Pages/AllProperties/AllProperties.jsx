@@ -12,7 +12,8 @@ const AllProperties = () => {
     const [searchText, setSearchText] = useState('');
     
     const getData = async () => {
-        const { data } = await axiosPublic.get(`/properties?search=${search}`);
+        const { data } = await axiosPublic.get(`/properties?search=${search}`
+        );
         return data;
     };
 

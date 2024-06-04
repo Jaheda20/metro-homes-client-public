@@ -3,37 +3,30 @@ import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SocialLogin = () => {
     const { googleSignIn } = useAuth();
-    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state || '/';
 
     const handleGoogleLogin = async () => {
-        googleSignIn()
-            .then(result => {
-                console.log(result.user)
-                const userInfo = {
-                    email: result.user?.email,
-                    name: result.user?.displayName,
-                    photo: result.user?.photoURL
-                }
-                axiosPublic.post('/users', userInfo)
-                    .then(res => {
-                        console.log(res.data)
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'User logged in successfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate(from)
-                    })
-            })
+        try {
+            await googleSignIn()
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'User logged in successfully.',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate(from)
+
+        }
+        catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
     }
 
 

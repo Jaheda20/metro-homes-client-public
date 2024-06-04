@@ -1,5 +1,10 @@
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const UpdateProperty = () => {
+
+    const axiosPublic = useAxiosPublic();
+    
+
     return (
         <div>
             <h2 className="text-3xl font-semibold mt-10 mb-4">Update Property Info </h2>

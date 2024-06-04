@@ -1,21 +1,24 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
 import { IoSettingsOutline } from "react-icons/io5";
-import { BsFillHouseAddFill, BsFingerprint } from 'react-icons/bs'
-import { GrUserAdmin } from 'react-icons/gr'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { MdHomeWork } from 'react-icons/md'
-import useAuth from '../../../Hooks/useAuth'
 import logo from '/logo.png'
-import { FaHouseCircleCheck } from "react-icons/fa6";
+import useRole from '../../../Hooks/useRole';
+import useAuth from '../../../Hooks/useAuth';
+import MenuItem from './Menu/MenuItem';
+import AdminMenu from './Menu/AdminMenu';
+import AgentMenu from './Menu/AgentMenu';
+import UserMenu from './Menu/UserMenu';
 
 
 const Sidebar = () => {
   const { logOut } = useAuth();
-  const [isActive, setActive] = useState(false)
+  const [isActive, setActive] = useState(false);
+  const [role] = useRole()
+  console.log(role)
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -29,7 +32,6 @@ const Sidebar = () => {
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
               <img
-                // className='hidden md:block'
                 src={logo}
                 alt='logo'
                 width='60'
@@ -49,9 +51,8 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-blue-700 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
-          isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-blue-700 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+          }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
@@ -60,7 +61,7 @@ const Sidebar = () => {
                 <img
                   src={logo}
                   alt='logo'
-                
+
                   className='rounded-full bg-slate-100 p-1 w-12 h-12 '
                 />
                 <p className='text-2xl font-semibold text-white'>Metro Homes</p>
@@ -74,92 +75,76 @@ const Sidebar = () => {
 
             {/*  Menu Items */}
             <nav>
-              {/* Statistics */}
-              <NavLink
-                to='statistics'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300  hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-300' : 'text-white'
-                  }`
-                }
-              >
-                <BsGraphUp className='w-5 h-5' />
 
-                <span className='mx-4 font-medium'>Statistics</span>
-              </NavLink>
+              <MenuItem label={'Statistics'} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
 
-              {/* Add Room */}
-              <NavLink
+              {role === 'admin' && <AdminMenu></AdminMenu> }
+              {role === 'agent' && <AgentMenu></AgentMenu>}
+              {role === 'user' && <UserMenu></UserMenu>}
+
+              
+              
+            
+              {/* <NavLink
                 to='addProperty'
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
                   }`
                 }
               >
                 <BsFillHouseAddFill className='w-5 h-5' />
 
                 <span className='mx-4 font-medium'>Add Property</span>
-              </NavLink>
+              </NavLink> */}
               {/* My Listed Properties */}
-              <NavLink
+              {/* <NavLink
                 to='myAddedProperties'
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
                   }`
                 }
               >
                 <MdHomeWork className='w-5 h-5' />
 
                 <span className='mx-4 font-medium'>My Added Properties</span>
-              </NavLink>
+              </NavLink> */}
               {/* my sold properties */}
-              <NavLink
+              {/* <NavLink
                 to='my-listings'
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
                   }`
                 }
               >
                 <FaHouseCircleCheck className='w-5 h-5' />
                 <span className='mx-4 font-medium'>My Sold Properties</span>
-              </NavLink>
+              </NavLink> */}
               {/* requested properties */}
-              <NavLink
+              {/* <NavLink
                 to='my-listings'
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
                   }`
                 }
               >
                 <FaHouseCircleCheck className='w-5 h-5' />
                 <span className='mx-4 font-medium'>My Sold Properties</span>
-              </NavLink>
+              </NavLink> */}
             </nav>
           </div>
         </div>
 
+                
+
         <div>
           <hr />
 
-          {/* Profile Menu */}
-          <NavLink
-            to='/dashboard/myProfile'
-            className={({ isActive }) =>
-              `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
-              }`
-            }
-          >
-            <IoSettingsOutline className='w-5 h-5 text-white' />
-
-            <span className='mx-4 font-medium'>Profile</span>
-          </NavLink>
-          <button
-            onClick={logOut}
+          <MenuItem
+            label='Profile'
+            address='/dashboard/profile'
+            icon={IoSettingsOutline}
+          />
+          <button onClick={logOut}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
             <GrLogout className='w-5 h-5 text-white' />

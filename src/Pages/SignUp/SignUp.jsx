@@ -10,7 +10,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const SignUp = () => {
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
     const { signUp, setLoading, updateUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
@@ -24,38 +24,29 @@ const SignUp = () => {
         const image = form.image.files[0];
         console.log(name, email, password, image)
 
-        // password validation
         if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/.test(password)) {
             toast.error('Invalid Password')
             return;
         }
-
         try {
             setLoading(true)
-
             const imageUrl = await imageUpload(image)
             console.log(imageUrl)
+            // password validation
+            
 
             const result = await signUp(email, password)
             console.log(result)
 
-            const userInfo = { name, email, image }
-            const response = await axiosPublic.post('/users', userInfo)
-            if (response.data.insertedId) {
-                await updateUser(name, imageUrl)
-                navigate('/')
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Your Account is created successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            } else {
-                toast.error('Signup failed')
-            }
-
-
+            await updateUser(name, imageUrl)
+            navigate('/')
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your Account is created successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
         catch (err) {
             console.log(err)
@@ -65,14 +56,9 @@ const SignUp = () => {
                 text: "Something went wrong!",
                 footer: '<a href="#">Why do I have this issue?</a>'
             });
-        } 
-        finally {
-            setLoading(false)
         }
 
     }
-
-
 
 
 

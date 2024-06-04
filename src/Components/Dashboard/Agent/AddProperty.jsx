@@ -3,20 +3,22 @@ import useAuth from "../../../Hooks/useAuth";
 import { imageUpload } from "../../../api/utils";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
-import { axiosPublic } from "../../../Hooks/useAxiosPublic";
+
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AddProperty = () => {
     const { user } = useAuth();
     const [loading, setLoading] = useState(false);
     const [imageText, setImageText] = useState('Upload Image');
     const [imagePreview, setImagePreview] = useState();
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate();
 
     const { mutateAsync } = useMutation({
         mutationFn: async propertyData =>{
-            const {data} = await axiosPublic.post('/property', propertyData)
+            const {data} = await axiosSecure.post('/property', propertyData)
             return data;
         },
         onSuccess: () =>{

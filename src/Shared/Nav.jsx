@@ -4,19 +4,58 @@ import useAuth from '../Hooks/useAuth';
 import { TbLogout } from 'react-icons/tb';
 import { FaHouseUser } from 'react-icons/fa';
 import defaultUser from '../assets/images/user.png'
-import { MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineDashboard, MdRealEstateAgent } from "react-icons/md";
+import { useState } from 'react';
+import AgentModal from '../Components/Modal/AgentModal';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 
 const Nav = () => {
 
-    const { user, logOut } = useAuth();
     const navLinks = <>
-        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/">Home</NavLink> </li>
-        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/allProperties">All Properties</NavLink> </li>
-        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/dashboard">Dashboard</NavLink> </li>
-        <li><NavLink className={({isActive})=> isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/customerService">Contact</NavLink> </li>
+        <li><NavLink className={({ isActive }) => isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/">Home</NavLink> </li>
+        <li><NavLink className={({ isActive }) => isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/allProperties">All Properties</NavLink> </li>
+        <li><NavLink className={({ isActive }) => isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/dashboard">Dashboard</NavLink> </li>
+        <li><NavLink className={({ isActive }) => isActive ? 'bg-blue-50 font-bold' : 'font-bold'} to="/customerService">Contact</NavLink> </li>
 
     </>
+
+    const axiosSecure = useAxiosSecure();
+    const { user, logOut } = useAuth();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const modalHandler = async () => {
+        console.log('Want to be an agent')
+        try {
+            const currentUser = {
+                email: user?.email,
+                role: 'user',
+                status: 'Requested'
+            }
+            const { data } = await axiosSecure.put(`/user`, currentUser)
+            console.log(data)
+            if (data.modifiedCount > 0) {
+                toast.success('Success! Please wait for admin approval')
+            } else {
+                toast.success('Please!, Wait for admin approval👊')
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+        finally{
+        closeModal()
+        }
+    }
+
+    
+
+
 
     return (
         <div>
@@ -42,53 +81,32 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
+
                     {
                         user ?
-                        <div className="dropdown dropdown-bottom dropdown-end flex items-center gap-4">
+                            <div className="dropdown dropdown-bottom dropdown-end flex items-center gap-4">
                                 <div tabIndex={0} className="hover:underline">
-                                <p>{user?.displayName || 'Unknown User'}</p>
+                                    <p>{user?.displayName || 'Unknown User'}</p>
                                 </div>
                                 <ul tabIndex={0} className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li><Link to="/dashboard/profile"><FaHouseUser /> Profile</Link></li>
+                                    <li><button onClick={() => setIsModalOpen(true)}><MdRealEstateAgent /> Be an Agent</button></li>
+                                    <AgentModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler} />
+
                                     <li>
-                                        <a>
-                                        <FaHouseUser />
-                                            Profile
-                                            
-                                        </a>
-                                    </li>
-                                    <li>
-                                      <Link to="/dashboard"><MdOutlineDashboard /> Dashboard</Link> </li>
+                                        <Link to="/dashboard"><MdOutlineDashboard /> Dashboard</Link> </li>
                                     <li><a onClick={logOut}><TbLogout /> Logout</a></li>
-                                    
+
                                 </ul>
+
                                 <div className=" " >
-                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} className='w-10 h-10 rounded-full' />
-                                    </div>
-                                
+                                    <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} className='w-10 h-10 rounded-full' />
+                                </div>
+
                             </div>
-                        
-                            // <div className="dropdown dropdown-end flex items-center">
-                                
-                            //     <p>{user?.displayName || 'Unknown User'}</p>
-                            //     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                    
-                            //         <div className="w-10 rounded-full " >
-                            //             <img alt="Tailwind CSS Navbar component" src={user?.photoURL || defaultUser} />
-                            //         </div>
-                            //     </div>
-                            //     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            //         <li>
-                            //             <a>
-                            //             <FaHouseUser />
-                            //                 Profile
-                                            
-                            //             </a>
-                            //         </li>
-                            //         <li><a onClick={logOut}><TbLogout /> Logout</a></li>
-                                    
-                            //     </ul>
-                            // </div>
-                            
+
+
                             :
                             <Link to="/login">
                                 <button className="btn btn-xs sm:btn-sm md:btn-md bg-blue-600 text-white">Login</button>

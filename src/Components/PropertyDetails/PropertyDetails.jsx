@@ -1,19 +1,19 @@
 import { useParams } from "react-router-dom";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FiMapPin } from "react-icons/fi";
 import { FaBath, FaBed } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const PropertyDetails = () => {
     const { id } = useParams();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
 
     const { data: property = [], isLoading } = useQuery({
         queryKey: ['property', id],
         queryFn: async () => {
-            const { data } = await axiosPublic.get(`/property/${id}`)
+            const { data } = await axiosSecure.get(`/property/${id}`)
             return data
         }
     })
