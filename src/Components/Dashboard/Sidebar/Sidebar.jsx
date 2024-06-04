@@ -78,58 +78,10 @@ const Sidebar = () => {
 
               <MenuItem label={'Statistics'} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
 
-              {role === 'admin' && <AdminMenu></AdminMenu> }
+              {/* {role === 'admin' && <AdminMenu></AdminMenu> } */}
+              <AdminMenu></AdminMenu>
               {role === 'agent' && <AgentMenu></AgentMenu>}
-              {role === 'user' && <UserMenu></UserMenu>}
-
-              
-              
-            
-              {/* <NavLink
-                to='addProperty'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
-                  }`
-                }
-              >
-                <BsFillHouseAddFill className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>Add Property</span>
-              </NavLink> */}
-              {/* My Listed Properties */}
-              {/* <NavLink
-                to='myAddedProperties'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
-                  }`
-                }
-              >
-                <MdHomeWork className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Added Properties</span>
-              </NavLink> */}
-              {/* my sold properties */}
-              {/* <NavLink
-                to='my-listings'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
-                  }`
-                }
-              >
-                <FaHouseCircleCheck className='w-5 h-5' />
-                <span className='mx-4 font-medium'>My Sold Properties</span>
-              </NavLink> */}
-              {/* requested properties */}
-              {/* <NavLink
-                to='my-listings'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-white'
-                  }`
-                }
-              >
-                <FaHouseCircleCheck className='w-5 h-5' />
-                <span className='mx-4 font-medium'>My Sold Properties</span>
-              </NavLink> */}
+              {role === 'user' && <UserMenu></UserMenu>} 
             </nav>
           </div>
         </div>
