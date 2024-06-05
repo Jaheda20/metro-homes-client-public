@@ -68,7 +68,7 @@ const router = createBrowserRouter([
                 element: <MyAddedProperties></MyAddedProperties>
             },
             {
-                path: "update",
+                path: "property/update/:id",
                 element: <UpdateProperty></UpdateProperty>
             },
             {

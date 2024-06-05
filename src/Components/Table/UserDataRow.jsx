@@ -30,20 +30,19 @@ const UserDataRow = ({ user, refetch }) => {
     const handleAdmin = () => {
         mutateAsync({ role: 'Admin', status: 'Verified' })
         setIsAdmin(true)
+
     }
 
     const handleAgent = () => {
         mutateAsync({ role: 'Agent', status: 'Verified' })
-        // setIsAgent(true)
+        setIsAgent(true)
     }
 
     const handleFraud = async () => {
         await mutateAsync({ role: 'Fraud', status: 'Rejected', isFraud: true })
         setIsFraud(true)
     }
-    const onSuccess = data =>{
-        refetch()
-    }
+
 
 
     const handleDeleteUser = user => {
@@ -99,11 +98,34 @@ const UserDataRow = ({ user, refetch }) => {
             </td>
             <td>
                 <div className="tooltip" data-tip="Make Agent">
-                    <button onClick={handleAgent} disabled={ isAgent || user?.isFraud} className="btn hover:bg-blue-700 hover:text-white"><MdRealEstateAgent /></button>
+                    <button onClick={handleAgent} disabled={user?.isAgent || user?.isFraud} className="btn hover:bg-blue-700 hover:text-white"><MdRealEstateAgent /></button>
                 </div>
             </td>
             <td>
-                {
+                    <div className="tooltip" data-tip="Delete User">
+                        <button onClick={() => handleDeleteUser(user)} className="btn hover:bg-blue-700 hover:text-white"><MdOutlineDeleteForever />
+                        </button>
+                    </div>
+                </td>
+            {user?.role === 'Agent' &&  (
+                <td>
+                    {
+                        isFraud ? (
+                            <span className="text-red-500">
+                                <button className="btn bg-red-300"><TbAlien /></button>
+                            </span>
+                        ) : (
+                            <div className="tooltip" data-tip="Fraudulent User">
+                                <button onClick={handleFraud} disabled={isFraud} className="btn hover:bg-blue-700 hover:text-white">
+                                    <TbAlien />
+                                </button>
+                            </div>
+                        )
+                    }
+                </td>
+            )}
+
+                {/* {
                     user?.role === 'Fraud' ? (
                         <span className="text-red-500">
                             <button className="btn bg-red-300"><TbAlien /></button>
@@ -117,16 +139,11 @@ const UserDataRow = ({ user, refetch }) => {
                             className="btn hover:bg-blue-700 hover:text-white"><TbAlien /></button>
                         </div>
                     )
-                }
+                } */}
 
 
-            </td>
-            <td>
-                <div className="tooltip" data-tip="Delete User">
-                    <button onClick={() => handleDeleteUser(user)} className="btn hover:bg-blue-700 hover:text-white"><MdOutlineDeleteForever />
-                    </button>
-                </div>
-            </td>
+
+                
 
         </tr>
     );

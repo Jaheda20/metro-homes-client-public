@@ -10,7 +10,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const MyAddedProperties = () => {
 
     const { user } = useAuth();
-    const axiosSecure = useAxiosSecure() ;
+    const axiosSecure = useAxiosSecure();
     const { data: properties = [], isLoading, refetch } = useQuery({
         queryKey: ['my-added-properties', user?.email],
         queryFn: async () => {
@@ -42,7 +42,7 @@ const MyAddedProperties = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         })
-        if(result.isConfirmed){
+        if (result.isConfirmed) {
             try {
                 await mutateAsync(id)
             }
@@ -88,12 +88,16 @@ const MyAddedProperties = () => {
 
                                 </div>
                                 <div className="flex space-x-2 text-sm dark:text-gray-600">
-                                    <Link to="/dashboard/update">
-                                        <button className="btn flex items-center p-1 space-x-1.5">
-                                            <FaEdit size={24} />
-                                        </button>
-
-                                    </Link>
+                                    {
+                                        property.status === 'Rejected' ?
+                                            ""
+                                            :
+                                            <Link to={`/dashboard/property/update/${property._id}`}>
+                                                <button className="btn flex items-center p-1 space-x-1.5">
+                                                    <FaEdit size={24} />
+                                                </button>
+                                            </Link>
+                                    }
 
                                     <button onClick={() => handleDelete(property._id)} className="flex btn items-center p-1 space-x-1.5">
                                         <MdDelete size={24} />

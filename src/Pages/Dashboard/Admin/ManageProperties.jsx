@@ -7,7 +7,7 @@ const ManageProperties = () => {
     const {data: properties = [], isLoading, refetch} = useQuery({
         queryKey: ['properties'],
         queryFn: async () =>{
-            const {data} = await axiosSecure('/properties')
+            const {data} = await axiosSecure('/allProperties')
             return data
         }
     })
@@ -31,39 +31,45 @@ const ManageProperties = () => {
                                     <tr>
                                         <th
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
                                         >
                                             Property Title
                                         </th>
                                         <th
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
                                         >
                                             Location
                                         </th>
                                         <th
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
                                         >
                                             Price Range ($)
                                         </th>
                                         <th
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
                                         >
                                             Agent Name
                                         </th>
                                         <th
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
                                         >
                                             Agent Email
                                         </th>
                                         <th
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
                                         >
                                             Verification Status
+                                        </th>
+                                        <th
+                                            scope='col'
+                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
+                                        >
+                                            Actions
                                         </th>
 
 

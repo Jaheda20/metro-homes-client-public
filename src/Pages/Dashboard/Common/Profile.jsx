@@ -16,7 +16,7 @@ const Profile = () => {
   return (
     <div className='flex justify-center items-center h-screen'>
       
-      <div className='bg-white shadow-lg rounded-2xl w-3/5'>
+      <div className='bg-white shadow-lg rounded-2xl md:w-3/5'>
         <img
           alt='profile'
           src='https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtMjE4YmF0Y2gxMC1teW50LTEyLmpwZw.jpg'

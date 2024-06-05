@@ -110,7 +110,7 @@ const AddProperty = () => {
                                     id='agent'
                                     type='text'
                                     placeholder='Agent Name'
-                                    required
+                                    required readOnly
                                 />
                             </div>
                             <div className='space-y-1 text-sm'>
@@ -125,6 +125,7 @@ const AddProperty = () => {
                                     type='email'
                                     placeholder='Agent Email'
                                     required
+                                    readOnly
                                 />
                             </div>
 

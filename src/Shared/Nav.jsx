@@ -98,7 +98,7 @@ const Nav = () => {
                                     <AgentModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler} />
 
                                     <li>
-                                        <Link to="/dashboard"><MdOutlineDashboard /> Dashboard</Link> </li>
+                                        <Link to="/dashboard"><MdOutlineDashboard /> My Pages</Link> </li>
                                     <li><a onClick={logOut}><TbLogout /> Logout</a></li>
 
                                 </ul>
