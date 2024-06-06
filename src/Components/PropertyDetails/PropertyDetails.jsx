@@ -4,13 +4,18 @@ import { FiMapPin } from "react-icons/fi";
 import { FaBath, FaBed } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Comments from "../Comments/Comments";
+import { useState } from "react";
+import ReviewModal from "../Modal/ReviewModal";
 
 
 const PropertyDetails = () => {
     const { id } = useParams();
-    const axiosSecure = useAxiosSecure()
+    const axiosSecure = useAxiosSecure();
+    const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+    
 
-    const { data: property = [], isLoading } = useQuery({
+    const { data: property = [], isLoading, refetch } = useQuery({
         queryKey: ['property', id],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/property/${id}`)
@@ -23,6 +28,12 @@ const PropertyDetails = () => {
             <span className="loading loading-bars loading-lg"></span>
         </div>
     )
+
+    const closeReviewModal = () =>{
+        setIsReviewModalOpen(false)
+    }
+
+    
 
     return (
         <div className="mx-auto max-w-4xl w-full flex flex-col mt-20">
@@ -59,10 +70,22 @@ const PropertyDetails = () => {
             </p>
 
             </div>
+            <div className="justify-start mt-4 mb-14">
+            <button onClick={()=>setIsReviewModalOpen(true)} className=" btn bg-blue-700 btn-md text-white font-semibold px-8 rounded-xl">Add A Comment</button>
+            </div>
 
+         <ReviewModal
+                isOpen={isReviewModalOpen}
+                closeReviewModal={closeReviewModal}
+                setIsReviewModalOpen={setIsReviewModalOpen}
+                property = {property}
+                refetch = {refetch}
+                ></ReviewModal>
+        
             {/* comments */}
 
-            <h1 className="text-3xl mb-10">Comments:</h1>
+            <Comments></Comments>
+
             
 
 
