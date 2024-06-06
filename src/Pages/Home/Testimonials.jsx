@@ -10,7 +10,7 @@ const Testimonials = () => {
     
     const axiosSecure = useAxiosSecure()
     const { data: reviews = [], isLoading } = useQuery({
-        queryKey: ['properties'],
+        queryKey: ['reviews'],
         queryFn: async () => {
             const { data } = await axiosSecure.get('/reviews')
             return data
@@ -23,6 +23,8 @@ const Testimonials = () => {
         </div>
     ) 
 
+    const sortedReviews = reviews.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp))
+
 
     return (
         <div>
@@ -33,14 +35,14 @@ const Testimonials = () => {
                     navigation={true} modules={[Navigation]} className="mySwiper"
                 >
                     <div className="bg-gray-100">
-                        {reviews.map(review => <SwiperSlide key={review.id} review={review}>
+                        {reviews.map(review => <SwiperSlide key={review._id} review = {review} >
                             <div className="container max-w-3xl mx-auto">
                                 <div className="flex flex-col items-center w-full p-6 space-y-8 rounded-md lg:h-full lg:p-8 dark:bg-gray-50 dark:text-gray-800">
-                                    <img src={review.authorImage} alt="" className="w-20 h-20 rounded-full dark:bg-gray-500" />
+                                    <img src={review.authorImage} alt="" className="w-24 h-24 rounded-full dark:bg-gray-500" />
                                     <p className='font-bold'>Property Name: {review.title}</p>
                                     <blockquote className="max-w-2xl text-lg italic font-medium text-center">"{review.description}"</blockquote>
                                     <div className="text-center dark:text-gray-600">
-                                        <p>- {review.authorName}</p>
+                                        <p>-{review?.authorName} </p>
                                         
                                     </div>
                                     <div className="flex space-x-2">

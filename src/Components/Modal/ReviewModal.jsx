@@ -36,6 +36,42 @@ const ReviewModal = ({ isOpen, setIsReviewModalOpen, property, refetch }) => {
 
     })
 
+    // const handleSubmit = async e => {
+    //     e.preventDefault()
+    //     setLoading(true)
+    //     const form = e.target;
+    //     const propertyId = form.propertyId.value;
+    //     const title = form.title.value;
+    //     const description = form.description.value;
+    //     // const authorName = form.authorName.value;
+    //     // const email = form.email.value;
+    //     const timestamp = Date.now();
+    //     const options = {year: 'numeric', month: '2-digit', day: '2-digit'};
+    //     const formattedDate = new Intl.DateTimeFormat('en-CA', options).format(timestamp)
+    //     // const authorImageFile = form.image.files[0];
+    //     // const agentName = form.agentName.value;
+    //     const author = {
+    //         name: user?.displayName,
+    //         image: user?.photoURL,
+    //         email: user?.email
+    //     }
+        
+
+    //     try {
+    //         setLoading(true)
+            
+    //         const reviewData = {title, description, timestamp, propertyId, formattedDate, author}
+            
+    //         await mutateAsync(reviewData)
+
+    //     }
+    //     catch (err) {
+    //         console.log(err)
+    //         toast.error(err.message)
+    //         setLoading(false)
+    //     }
+    // }
+
     const handleSubmit = async e => {
         e.preventDefault()
         setLoading(true)

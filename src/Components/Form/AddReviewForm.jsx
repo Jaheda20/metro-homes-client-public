@@ -1,6 +1,6 @@
 
 
-const AddReviewForm = ({ handleSubmit, property, user, loading}) => {
+const AddReviewForm = ({ handleSubmit, property, user, loading }) => {
 
     
 
@@ -10,7 +10,7 @@ const AddReviewForm = ({ handleSubmit, property, user, loading}) => {
                 <form onSubmit={handleSubmit} >
                     <div className='grid grid-cols-2 gap-10'>
 
-                    <div className='space-y-1 text-sm'>
+                        <div className='space-y-1 text-sm'>
                             <label htmlFor='id' className='block text-gray-600'>
                                 Property Id
                             </label>
@@ -57,8 +57,8 @@ const AddReviewForm = ({ handleSubmit, property, user, loading}) => {
                                 required
                             />
                         </div>
-                        
-                        
+
+
                         <div className='space-y-1 text-sm'>
                             <label htmlFor='author name' className='block text-gray-600'>
                                 Author Name
@@ -74,7 +74,7 @@ const AddReviewForm = ({ handleSubmit, property, user, loading}) => {
                                 required
                             />
                         </div>
-                        
+
                         <div className='space-y-1 text-sm'>
                             <label htmlFor='author name' className='block text-gray-600'>
                                 Author's Email
@@ -86,7 +86,7 @@ const AddReviewForm = ({ handleSubmit, property, user, loading}) => {
                                 type='email'
                                 defaultValue={user?.email}
                                 placeholder="Author's Email"
-                                
+
                                 required
                             />
                         </div>
@@ -102,6 +102,20 @@ const AddReviewForm = ({ handleSubmit, property, user, loading}) => {
                             />
                             <img src={user?.photoURL} alt="" className="w-40" />
                         </div>
+
+                        {/* <div className='space-y-1 text-sm'>
+                            <label htmlFor='image' className='block text-gray-600'>
+                                Author Image
+                            </label>
+                            <input
+                                className='w-full px-4 py-3 text-gray-800 border border-blue-700 rounded-md '
+                                name='image'
+                                id='authorImage'
+                                type='file'
+                                accept='image/*'
+                            />
+                            {user?.photoURL && <img src={user.photoURL} alt="Author" className="w-40" />}
+                        </div> */}
 
 
                         <div className='space-y-1 text-sm'>

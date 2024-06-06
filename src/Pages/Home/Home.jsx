@@ -13,6 +13,8 @@ const Home = () => {
             <Info></Info>          
             <Contact></Contact>            
             <Testimonials></Testimonials>
+
+            
             <FAQ></FAQ>            
             <div className="w-full">
                 <hr className="w-full border-8 border-slate-500"/>

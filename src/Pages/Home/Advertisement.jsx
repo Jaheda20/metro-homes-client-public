@@ -27,7 +27,7 @@ const Advertisement = () => {
                     properties.map(property => <div key={property._id}>
                         <div className="card bg-base-100 shadow-xl hover:scale-110">
                             <div className="p-4 relative md:h-52 mb-4">
-                                <figure><img src={property.image} alt="Shoes" className="hover:scale-110 transition" /></figure>
+                                <figure><img src={property.image} alt="" className="hover:scale-110 transition" /></figure>
                                 <p className="absolute top-10 right-10 bg-white p-2 bg-opacity-80 text-black font-bold px-4 rounded-2xl">{property.status}</p>
 
                             </div>
