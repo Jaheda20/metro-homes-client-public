@@ -52,7 +52,7 @@ const AllProperties = () => {
 
     return (
         <div className="my-20">
-            <h2 className="text-4xl font-semibold mb-8">Homes for Sale</h2>
+            <h2 className="text-3xl font-semibold mb-8">Homes for Sale</h2>
             
             <div className="flex items-center justify-end my-6 gap-3">
                 <form onSubmit={handleSearch} className="flex items-center justify-center ">

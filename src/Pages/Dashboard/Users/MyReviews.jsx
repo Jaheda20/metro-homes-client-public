@@ -14,7 +14,6 @@ const MyReviews = () => {
             return data
         }
     })
-    console.log(reviews)
 
     const { mutateAsync } = useMutation({
         mutationFn: async id => {
