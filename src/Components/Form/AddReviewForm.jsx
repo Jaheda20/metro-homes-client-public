@@ -1,6 +1,6 @@
 
 
-const AddReviewForm = ({ handleSubmit, property, user, loading }) => {
+const AddReviewForm = ({ handleSubmit, property, user, loading, refetch }) => {
 
     
 

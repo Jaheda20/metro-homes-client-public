@@ -80,7 +80,7 @@ const Sidebar = () => {
 
           <div className='flex flex-col justify-between flex-1 mt-6'>
             <nav>
-              <MenuItem label={'Statistics'} address={'/dashboard'} icon={BsGraphUp}></MenuItem>
+              
 
               {role === 'Admin' && <AdminMenu></AdminMenu> }
               {role === 'Agent' && <AgentMenu></AgentMenu>}

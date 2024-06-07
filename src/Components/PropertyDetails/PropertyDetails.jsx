@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { FiMapPin } from "react-icons/fi";
 import { FaBath, FaBed } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
@@ -7,13 +7,17 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Comments from "../Comments/Comments";
 import { useState } from "react";
 import ReviewModal from "../Modal/ReviewModal";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 
 const PropertyDetails = () => {
     const { id } = useParams();
+    const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
     const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const { data: property = [], isLoading, refetch } = useQuery({
         queryKey: ['property', id],
@@ -21,6 +25,26 @@ const PropertyDetails = () => {
             const { data } = await axiosSecure.get(`/property/${id}`)
             return data
         }
+    })
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async wishlistData => {
+            const {data} = await axiosSecure.post(`/wishlists/${user?.email}`, wishlistData)
+            return data;
+            
+        },
+        onSuccess: () =>{
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Property has been added Successfully to your wishlist!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            navigate('/dashboard/myWishlist')
+            setLoading(false)
+        }
+
     })
 
     if (isLoading) return (
@@ -33,6 +57,11 @@ const PropertyDetails = () => {
         setIsReviewModalOpen(false)
     }
 
+    const handleWishlist = async () =>{ 
+        setLoading(false)       
+        await mutateAsync({property, propertyId: property._id, email: user?.email}) 
+    }
+
 
 
     return (
@@ -40,7 +69,7 @@ const PropertyDetails = () => {
             <div className="mb-20">
                 <div className="flex flex-col items-center relative">
                     <img src={property.image} alt="" className="w-full" />
-                    <p className="absolute flex items-center text-lg gap-2 font-semibold top-8 right-10 bg-white py-2 px-6 bg-opacity-70 rounded-md"><CiHeart size={20} /> Add to Wishlist
+                    <p onClick={handleWishlist} className="absolute flex items-center text-lg gap-2 font-semibold top-8 right-10 bg-white py-2 px-6 bg-opacity-70 rounded-md"><CiHeart size={20} /> Add to Wishlist
                     </p>
                 </div>
                 <div className="mt-10 flex justify-between w-full">

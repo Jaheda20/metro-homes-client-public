@@ -19,6 +19,7 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import MyReviews from "../Pages/Dashboard/Users/MyReviews";
 import ManageReviews from "../Pages/Dashboard/Admin/ManageReviews";
+import Wishlist from "../Pages/Dashboard/Users/Wishlist";
 
 const router = createBrowserRouter([
     {
@@ -92,6 +93,11 @@ const router = createBrowserRouter([
             {
                 path: "myReviews",
                 element: <MyReviews></MyReviews>
+            },
+            {
+                path: "myWishlist",
+                element: <Wishlist></Wishlist>
+
             }
         ]
     }

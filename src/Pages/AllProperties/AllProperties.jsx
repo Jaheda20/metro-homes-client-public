@@ -10,23 +10,19 @@ const AllProperties = () => {
     const axiosPublic = useAxiosPublic();
     const [search, setSearch] = useState('');
     const [searchText, setSearchText] = useState('');
+    const [sort, setSort] = useState('');
     
-    // const getData = async () => {
-    //     const { data } = await axiosPublic.get(`/properties?search=${search}`
-    //     );
-    //     return data;
-    // };
 
     const getData = async () => {
-        const { data } = await axiosPublic.get(`/properties?status=verified&search=${search}`
+        const { data } = await axiosPublic.get(`/properties?status=verified&search=${search}&sort=${sort}`
         );
         return data;
     };
 
     const { data: properties = [], isLoading, refetch } = useQuery({
-        queryKey: ['properties', { search }],
+        queryKey: ['properties', { search, sort }],
         queryFn: getData,
-
+        
     });
 
 
@@ -45,14 +41,33 @@ const AllProperties = () => {
     const handleReset = () => {
         setSearch('');
         setSearchText('');
+        
         refetch();
     }
 
-    
+    const handleSort = (e) =>{
+        setSort(e.target.value);
+        refetch()
+    }
 
     return (
         <div className="my-20">
             <h2 className="text-3xl font-semibold mb-8">Homes for Sale</h2>
+            
+           <div className="flex items-center justify-between">
+           <div>
+            <select onChange ={handleSort}
+            value={sort}              
+              name='sort'
+              id='sort'
+              className='border bg-slate-50 p-4 rounded-lg'
+            >
+              <option value=''>Filter By Price</option>
+              <option value='asc'>Max Start Price</option>
+              <option value='desc'>Min Start Price</option>
+            </select>
+
+          </div>
             
             <div className="flex items-center justify-end my-6 gap-3">
                 <form onSubmit={handleSearch} className="flex items-center justify-center ">
@@ -69,6 +84,12 @@ const AllProperties = () => {
                 <button onClick={handleReset} className="btn border-blue-700 text-blue-700">Reset</button>
 
             </div>
+            
+            </div> 
+            
+
+
+
             <div className="flex flex-col md:flex-row gap-10">
                 <div className="md:w-2/3 gap-4 ">
                     {
