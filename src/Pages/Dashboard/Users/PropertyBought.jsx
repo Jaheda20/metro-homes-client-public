@@ -14,6 +14,11 @@ const PropertyBought = () => {
         }
     })
 
+    if (isLoading) return (
+        <div className="flex items-center justify-center text-7xl my-40">
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    )
 
 
     return (
