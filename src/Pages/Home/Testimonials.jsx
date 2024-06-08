@@ -23,7 +23,9 @@ const Testimonials = () => {
         </div>
     ) 
 
-    const sortedReviews = reviews.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp))
+    const sortedReviews = reviews.slice().sort((a,b)=> new Date(b.timestamp)-new Date(a.timestamp))
+
+    const latestReviews = sortedReviews.slice(0, 4)
 
 
     return (
@@ -35,7 +37,7 @@ const Testimonials = () => {
                     navigation={true} modules={[Navigation]} className="mySwiper"
                 >
                     <div className="bg-gray-100">
-                        {reviews.map(review => <SwiperSlide key={review._id} review = {review} >
+                        {latestReviews.map(review => <SwiperSlide key={review._id} review = {review} >
                             <div className="container max-w-3xl mx-auto">
                                 <div className="flex flex-col items-center w-full p-6 space-y-8 rounded-md lg:h-full lg:p-8 dark:bg-gray-50 dark:text-gray-800">
                                     <img src={review.authorImage} alt="" className="w-24 h-24 rounded-full dark:bg-gray-500" />
