@@ -23,6 +23,7 @@ import Wishlist from "../Pages/Dashboard/Users/Wishlist";
 import MakeOffer from "../Components/Dashboard/User/MakeOffer";
 import PropertyBought from "../Pages/Dashboard/Users/PropertyBought";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
+import Payment from "../Components/Dashboard/User/Payment";
 
 const router = createBrowserRouter([
     {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
             {
                 path: "requestedProperties",
                 element: <RequestedProperties></RequestedProperties>
+            },
+            {
+                path: "payment",
+                element: <Payment></Payment>
             }
         ]
     }

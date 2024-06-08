@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import { Link } from "react-router-dom";
+import usePayment from "../../../Hooks/usePayment";
 
 const PropertyBought = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const {payments} = usePayment();
 
     const { data: offers = [], isLoading, refetch } = useQuery({
         queryKey: ['offers', user?.email],
@@ -44,8 +47,14 @@ const PropertyBought = () => {
                                 </div>
                                 <div>
                                     {
+                                        offer?.status === 'Bought' && (<p> Your Transaction ID: <span className="text-blue-700">{payments.find(p => p.propertyId === offer._id)?.transactionId}</span></p>) } 
+                                        {
+
                                         offer?.status === 'Accepted' ?
-                                        <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md text-white bg-blue-700">Pay Now</button> 
+                                        <Link to="/dashboard/payment" state={{offer}}>
+                                        <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md text-white bg-blue-700">Pay Now</button>                                       
+                                        </Link> 
+                                         
                                         :
                                         ""
                                     }
