@@ -39,6 +39,7 @@ const MakeOffer = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              refetch()
               navigate('/dashboard/propertyBought')
         }
     })
@@ -60,11 +61,17 @@ const MakeOffer = () => {
             return
         }
 
-        const offerData = { propertyId: property._id, title, location, agentName, agentEmail, buyerName, email, amount, status: 'Pending'
+        const offerData = { propertyId: property._id, title, propertyImage: property.image, location, agentName, agentEmail, buyerName, email, amount, status: 'Pending'
         } 
         console.log(offerData)
         await mutateAsync(offerData)
     }
+
+    if (isLoading) return (
+        <div className="flex items-center justify-center text-7xl my-40">
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    )
 
 
     return (
