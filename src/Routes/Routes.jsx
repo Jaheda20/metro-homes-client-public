@@ -24,6 +24,7 @@ import MakeOffer from "../Components/Dashboard/User/MakeOffer";
 import PropertyBought from "../Pages/Dashboard/Users/PropertyBought";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 import Payment from "../Components/Dashboard/User/Payment";
+import MySoldProperties from "../Pages/Dashboard/Agent/MySoldProperties";
 
 const router = createBrowserRouter([
     {
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
             {
                 path: "payment",
                 element: <Payment></Payment>
+            },
+            {
+                path: "mySoldProperties",
+                element: <MySoldProperties></MySoldProperties>
             }
         ]
     }

@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
-import OfferedDataRow from "../../../Components/Table/OfferedDataRow";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SoldDataRow from "../../../Components/Table/SoldDataRow";
 
-const RequestedProperties = () => {
+const MySoldProperties = () => {
+
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth();
 
-    const { data: gotOffers = [], isLoading, refetch } = useQuery({
-        queryKey: ['offers', user?.email],
+    const { data: soldProperties = [], isLoading } = useQuery({
+        queryKey: ['sold', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/sentOffers/${user?.email}`)
             return data
@@ -24,7 +25,8 @@ const RequestedProperties = () => {
 
     return (
         <div>
-            <h2 className="text-2xl font-semibold my-10">Requested/Offered: ({gotOffers.length})</h2>
+            <h1 className="text-2xl my-10 font-semibold">Total Sold: ({soldProperties.length}) </h1>
+
             <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
               <table className='min-w-full leading-normal'>
@@ -58,29 +60,35 @@ const RequestedProperties = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 font-semibold text-left text-sm uppercase'
                     >
-                      Offered price ($)
+                      Sold price ($)
                     </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-semibold'
-                    >
-                      Status
-                    </th>
+                    
            
                   </tr>
                 </thead>
-                <tbody>                  
-                  {gotOffers.map(offers => <OfferedDataRow key={offers._id}
+                <tbody>
+                    {
+                        soldProperties.map(prop => 
+                        <SoldDataRow 
+                        key={prop._id}
+                        prop={prop}>
+
+
+                        </SoldDataRow>)
+                    }
+
+                  {/* {gotOffers.map(offers => <OfferedDataRow key={offers._id}
                   offers = {offers}
                   user={user}
                   refetch = {refetch}>
-                  </OfferedDataRow>)}
+                  </OfferedDataRow>)} */}
                 </tbody>
               </table>
             </div>
           </div>
+
         </div>
     );
 };
 
-export default RequestedProperties;
+export default MySoldProperties;

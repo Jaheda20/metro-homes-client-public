@@ -58,26 +58,31 @@ const OfferedDataRow = ({ user, refetch, offers }) => {
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 <p className='text-gray-900 whitespace-no-wrap'>{offers?.amount}</p>
-            </td>                    
-            
+            </td>
+
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 {
                     offers?.status ? (
-                        <p className={`font-bold ${offers?.status === 'Accepted' ? 'text-blue-700' : offers?.status === 'Rejected' ? 'text-red-700' : 'text-yellow-500'}`}>{offers.status}</p>
+                        <p className={`font-bold ${offers?.status === 'Accepted' ? 'text-blue-700' :
+                                offers?.status === 'Rejected' ? 'text-red-700' : offers?.status === 'Bought' ? 'text-green-700' : 'text-yellow-500'}`}>{offers.status}</p>
                     ) : (<p>Pending</p>)
                 }
 
             </td>
 
-             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+            <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 <div className='text-gray-900 whitespace-no-wrap flex flex-col gap-2'>
 
                     {
-                        offers?.status === 'Accepted' ? (<p className="text-blue-700 bg-yellow-300 text-center py-1 rounded-xl"> Accepted </p>) :
+                        offers?.status === 'Accepted' ? (<p className="text-blue-700 bg-yellow-300 text-center font-bold  py-1 rounded-xl"> Accepted </p>) :
 
 
                             offers?.status === 'Rejected' ?
-                                (<p className="text-red-700 bg-yellow-300 text-center py-1 rounded-xl"> Rejected </p>)
+                                (<p className="text-red-700 bg-yellow-300 font-bold text-center py-1 rounded-xl"> Rejected </p>) :
+                                offers?.status === 'Bought' ?
+                                (<p className="text-green-700 font-bold bg-yellow-300 text-center py-1 rounded-xl"> Bought </p>)
+
+
                                 :
                                 (<>
                                     <button onClick={handleAccept} className="text-blue-700 btn"> <SiTicktick size={20} />

@@ -62,8 +62,8 @@ const MyAddedProperties = () => {
 
     return (
         <div>
-            <h2 className="text-3xl font-semibold mb-6">My listing page: <span className="bg-blue-200 p-2">{properties.length}
-            </span></h2>
+            <h2 className="text-2xl font-semibold my-8">My listings: ({properties.length})
+            </h2>
             <div className="grid md:grid-cols-3">
                 {
                     properties.map(property => <div key={property._id}>
