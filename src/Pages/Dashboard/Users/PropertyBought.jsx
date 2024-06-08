@@ -42,7 +42,16 @@ const PropertyBought = () => {
                                     <p className="dark:text-gray-800 font-semibold">Offered: ${offer.amount}</p>
                                     
                                 </div>
-                                <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">Read more</button>
+                                <div>
+                                    {
+                                        offer?.status === 'Accepted' ?
+                                        <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md text-white bg-blue-700">Pay Now</button> 
+                                        :
+                                        ""
+                                    }
+                                </div>
+
+                               
                             </div>
                         </div>
 

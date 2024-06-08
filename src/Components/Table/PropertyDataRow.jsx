@@ -86,16 +86,7 @@ const PropertyDataRow = ({ property, refetch }) => {
             </td>
 
 
-            {/* <div className="tooltip" data-tip="Verify">
-                    <button onClick={()=>handleVerify()} className="btn "><RiVerifiedBadgeFill className="text-blue-700" size={20} />
-                    </button>
-                </div>
-            </td>
-            <td>
-                <div className="tooltip" data-tip="Reject">
-                    <button onClick={handleReject} className="btn "><GiCancel className="text-red-700" size={20} /></button>
-                </div>
-            </td> */}
+            
 
 
         </tr>
