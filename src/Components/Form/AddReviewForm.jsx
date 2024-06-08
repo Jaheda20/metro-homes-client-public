@@ -103,21 +103,6 @@ const AddReviewForm = ({ handleSubmit, property, user, loading, refetch }) => {
                             <img src={user?.photoURL} alt="" className="w-40" />
                         </div>
 
-                        {/* <div className='space-y-1 text-sm'>
-                            <label htmlFor='image' className='block text-gray-600'>
-                                Author Image
-                            </label>
-                            <input
-                                className='w-full px-4 py-3 text-gray-800 border border-blue-700 rounded-md '
-                                name='image'
-                                id='authorImage'
-                                type='file'
-                                accept='image/*'
-                            />
-                            {user?.photoURL && <img src={user.photoURL} alt="Author" className="w-40" />}
-                        </div> */}
-
-
                         <div className='space-y-1 text-sm'>
                             <label htmlFor='description' className='block text-gray-600'>
                                 Description

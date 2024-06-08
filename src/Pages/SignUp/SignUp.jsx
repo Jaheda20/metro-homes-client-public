@@ -32,9 +32,7 @@ const SignUp = () => {
             setLoading(true)
             const imageUrl = await imageUpload(image)
             console.log(imageUrl)
-            // password validation
             
-
             const result = await signUp(email, password)
             console.log(result)
 
@@ -80,7 +78,7 @@ const SignUp = () => {
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="image" className="block dark:text-gray-600">Image</label>
-                            <input type="file" name="image" id="image" placeholder="Image URL" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
+                            <input type="file" name="image" id="image" placeholder="Image URL" accept='image/*' className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="email" className="block dark:text-gray-600">Email</label>

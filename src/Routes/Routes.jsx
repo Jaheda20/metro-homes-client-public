@@ -20,6 +20,8 @@ import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import MyReviews from "../Pages/Dashboard/Users/MyReviews";
 import ManageReviews from "../Pages/Dashboard/Admin/ManageReviews";
 import Wishlist from "../Pages/Dashboard/Users/Wishlist";
+import MakeOffer from "../Components/Dashboard/User/MakeOffer";
+import PropertyBought from "../Pages/Dashboard/Users/PropertyBought";
 
 const router = createBrowserRouter([
     {
@@ -98,6 +100,14 @@ const router = createBrowserRouter([
                 path: "myWishlist",
                 element: <Wishlist></Wishlist>
 
+            },
+            {
+                path: "makeOffer/:id",
+                element: <MakeOffer></MakeOffer>
+            },
+            {
+                path: "propertyBought",
+                element: <PropertyBought></PropertyBought>
             }
         ]
     }

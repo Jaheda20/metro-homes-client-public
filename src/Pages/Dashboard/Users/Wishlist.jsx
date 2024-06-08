@@ -2,13 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { MdOutlineVerified } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Wishlist = () => {
 
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth();
 
-    const { data: wishlists = [], isLoading, refetch } = useQuery({
+    const { data: wishlists = [], isLoading } = useQuery({
         queryKey: ['wishlist'],
         queryFn: async () => {
             const { data } = await axiosSecure(`/wishlists/${user?.email}`)
@@ -57,9 +58,12 @@ const Wishlist = () => {
                             </div>
                             <div className="flex flex-wrap justify-end gap-2 my-8">
                                 
+                                    <Link to={`/dashboard/makeOffer/${wishlist.property._id}`}>
                                     <button className="btn text-white bg-blue-700 rounded-2xl">
-                                        Make Offer
+                                        Make an Offer
                                     </button>
+                                    </Link>
+
                                     <button className="btn text-white bg-blue-700 rounded-2xl"> Delete
                                         
                                     </button>

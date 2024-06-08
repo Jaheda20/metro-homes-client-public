@@ -25,7 +25,6 @@ const Nav = () => {
     const axiosSecure = useAxiosSecure();
     const { user, logOut } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [role] = useRole();
 
     const closeModal = () => {
         setIsModalOpen(false)
