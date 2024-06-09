@@ -25,6 +25,8 @@ import PropertyBought from "../Pages/Dashboard/Users/PropertyBought";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 import Payment from "../Components/Dashboard/User/Payment";
 import MySoldProperties from "../Pages/Dashboard/Agent/MySoldProperties";
+import AdminRoute from "./AdminRoute";
+import AgentRoute from "./AgentRoute";
 
 const router = createBrowserRouter([
     {
@@ -60,70 +62,102 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
-                index: 0,
-                path: 'profile',
-                element: <Profile></Profile>
+                index: true,
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
+
             },
-            
+
             {
                 path: "addProperty",
-                element: <AddProperty></AddProperty>
+                element: <PrivateRoute>
+                    <AgentRoute>
+                        <AddProperty></AddProperty>
+                    </AgentRoute>
+                </PrivateRoute>
+
             },
             {
                 path: "myAddedProperties",
-                element: <MyAddedProperties></MyAddedProperties>
+                element: <PrivateRoute>
+                    <AgentRoute>
+                        <MyAddedProperties></MyAddedProperties>
+                    </AgentRoute>
+                </PrivateRoute>
+
             },
             {
                 path: "property/update/:id",
-                element: <UpdateProperty></UpdateProperty>
+                element: <PrivateRoute>
+                    <AgentRoute>
+                        <UpdateProperty></UpdateProperty>
+                    </AgentRoute>
+                </PrivateRoute>
+
             },
             {
                 path: "manageUsers",
-                element: <PrivateRoute><ManageUsers></ManageUsers></PrivateRoute>
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <ManageUsers></ManageUsers>
+                    </AdminRoute>
+                </PrivateRoute>
             },
             {
                 path: "manageReviews",
                 element: <PrivateRoute>
-                    <ManageReviews></ManageReviews>
+                    <AdminRoute>
+                        <ManageReviews></ManageReviews>
+                    </AdminRoute>
                 </PrivateRoute>
             },
             {
                 path: "manageProperties",
                 element: <PrivateRoute>
-                    <ManageProperties></ManageProperties>
+                    <AdminRoute>
+                        <ManageProperties></ManageProperties>
+                    </AdminRoute>
                 </PrivateRoute>
             },
             {
                 path: "myReviews",
-                element: <MyReviews></MyReviews>
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             },
             {
                 path: "myWishlist",
-                element: <Wishlist></Wishlist>
+                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
+
 
             },
             {
                 path: "makeOffer/:id",
-                element: <MakeOffer></MakeOffer>
+                element: <PrivateRoute><MakeOffer></MakeOffer></PrivateRoute>
             },
             {
                 path: "propertyBought",
-                element: <PropertyBought></PropertyBought>
+                element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
             },
             {
                 path: "requestedProperties",
-                element: <RequestedProperties></RequestedProperties>
+                element: <PrivateRoute>
+                    <AgentRoute>
+                        <RequestedProperties></RequestedProperties>
+                    </AgentRoute>
+                </PrivateRoute>
             },
             {
                 path: "payment",
-                element: <Payment></Payment>
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             },
             {
                 path: "mySoldProperties",
-                element: <MySoldProperties></MySoldProperties>
+                element: <PrivateRoute>
+                    <AgentRoute>
+                        <MySoldProperties></MySoldProperties>
+                    </AgentRoute>
+                </PrivateRoute>
             }
         ]
     }

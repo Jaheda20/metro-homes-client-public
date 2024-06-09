@@ -62,9 +62,9 @@ const AllProperties = () => {
               id='sort'
               className='border bg-slate-50 p-4 rounded-lg'
             >
-              <option value=''>Filter By Price</option>
-              <option value='asc'>Max Start Price</option>
-              <option value='desc'>Min Start Price</option>
+              <option value=''>Filter By Price Range-</option>
+              <option value='asc'>Low to High</option>
+              <option value='desc'>High to Low</option>
             </select>
 
           </div>

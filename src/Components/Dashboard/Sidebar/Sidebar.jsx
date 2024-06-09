@@ -94,7 +94,7 @@ const Sidebar = () => {
 
           <MenuItem
             label='Profile'
-            address='/dashboard/profile'
+            address='/dashboard'
             icon={IoSettingsOutline}
           />
           <button onClick={()=>handleLogout(logOut)}

@@ -91,7 +91,7 @@ const Nav = () => {
                                     <p>{user?.displayName || 'Unknown User'}</p>
                                 </div>
                                 <ul tabIndex={0} className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                    <li><Link to="/dashboard/profile"><FaHouseUser /> Profile</Link></li>
+                                    <li><Link to="/dashboard"><FaHouseUser /> Profile</Link></li>
 
                                     <li><button onClick={() => setIsModalOpen(true)}><MdRealEstateAgent /> Be an Agent</button></li>
                                     <AgentModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler} />

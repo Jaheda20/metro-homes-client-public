@@ -15,6 +15,7 @@ const MySoldProperties = () => {
             return data
         }
     })
+    const totalPrice = soldProperties.reduce((total, property)=> total+(parseFloat(property.amount)),0)
 
     if (isLoading) return (
         <div className="flex items-center justify-center text-7xl my-40">
@@ -26,6 +27,7 @@ const MySoldProperties = () => {
     return (
         <div>
             <h1 className="text-2xl my-10 font-semibold">Total Sold: ({soldProperties.length}) </h1>
+            <h3>{totalPrice}</h3>
 
             <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>

@@ -20,9 +20,9 @@ const ManageProperties = () => {
     )
     return (
         <div>
-            <h2>Manage Properties</h2>
+            <h2 className="text-2xl font-semibold my-10">Manage Properties: ({properties.length})</h2>
             <div className='container mx-auto px-4 sm:px-8'>
-                <h1>{properties.length}</h1>
+                
                 <div className='py-8'>
                     <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
                         <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>

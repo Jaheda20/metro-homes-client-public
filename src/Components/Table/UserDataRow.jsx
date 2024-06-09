@@ -6,9 +6,10 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const UserDataRow = ({ user, refetch }) => {
-
+    const {user: loggedInUser} = useAuth();
     const [isAdmin, setIsAdmin] = useState(false);
     const [isAgent, setIsAgent] = useState(false);
     const [isFraud, setIsFraud] = useState(false);
@@ -23,7 +24,7 @@ const UserDataRow = ({ user, refetch }) => {
         onSuccess: data => {
             refetch()
             console.log(data)
-            toast.success('User role updated successfully!')
+            toast.success('User role is updated successfully!')
         },
     })
 
@@ -77,7 +78,14 @@ const UserDataRow = ({ user, refetch }) => {
                 <p className='text-gray-900 whitespace-no-wrap'>{user?.email}</p>
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                <p className='text-gray-900 whitespace-no-wrap'>{user?.role}</p>
+                {
+                    
+                        user?.role === 'Admin' ? <p className="font-bold text-blue-700">{user?.role}</p>
+                            :
+                            <p className='text-gray-900 whitespace-no-wrap'>{user?.role}</p>
+                    
+                }
+
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 {user?.status ? (
@@ -102,50 +110,34 @@ const UserDataRow = ({ user, refetch }) => {
                 </div>
             </td>
             <td>
-                    <div className="tooltip" data-tip="Delete User">
-                        <button onClick={() => handleDeleteUser(user)} className="btn hover:bg-blue-700 hover:text-white"><MdOutlineDeleteForever />
-                        </button>
-                    </div>
-                </td>
-            {user?.role === 'Agent' &&  (
-                <td>
-                    {
-                        isFraud ? (
-                            <span className="text-red-500">
-                                <button className="btn bg-red-300"><TbAlien /></button>
-                            </span>
-                        ) : (
-                            <div className="tooltip" data-tip="Fraudulent User">
-                                <button onClick={handleFraud} disabled={isFraud} className="btn hover:bg-blue-700 hover:text-white">
-                                    <TbAlien />
-                                </button>
-                            </div>
-                        )
-                    }
-                </td>
-            )}
-
-                {/* {
-                    user?.role === 'Fraud' ? (
-                        <span className="text-red-500">
-                            <button className="btn bg-red-300"><TbAlien /></button>
-                        </span>
-                    )
-                        :
-                    (
-                        <div className="tooltip" data-tip="Fraudulent User">
-                            <button onClick={!user?.isFraud ? handleFraud: null}
-                            disabled={user?.isFraud}
-                            className="btn hover:bg-blue-700 hover:text-white"><TbAlien /></button>
-                        </div>
-                    )
-                } */}
+                <div className="tooltip" data-tip="Delete User">
+                    <button onClick={() => handleDeleteUser(user)} className="btn hover:bg-blue-700 hover:text-white"><MdOutlineDeleteForever />
+                    </button>
+                </div>
+            </td>
+            {
+                user?.role === 'Agent' && (
+                    <td>
+                        {
+                            isFraud ? (
+                                <span className="text-red-500">
+                                    <button className="btn bg-red-300"><TbAlien /></button>
+                                </span>
+                            ) : (
+                                <div className="tooltip" data-tip="Fraudulent User">
+                                    <button onClick={handleFraud} disabled={isFraud} className="btn hover:bg-blue-700 hover:text-white">
+                                        <TbAlien />
+                                    </button>
+                                </div>
+                            )
+                        }
+                    </td>
+                )
+            }
 
 
 
-                
-
-        </tr>
+        </tr >
     );
 };
 
