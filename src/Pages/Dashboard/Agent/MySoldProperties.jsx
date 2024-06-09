@@ -15,6 +15,7 @@ const MySoldProperties = () => {
             return data
         }
     })
+    
     const totalPrice = soldProperties.reduce((total, property)=> total+(parseFloat(property.amount)),0)
 
     if (isLoading) return (
@@ -23,6 +24,7 @@ const MySoldProperties = () => {
         </div>
     )
 
+   
 
     return (
         <div>

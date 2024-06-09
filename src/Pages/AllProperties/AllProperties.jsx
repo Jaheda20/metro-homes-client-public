@@ -63,8 +63,8 @@ const AllProperties = () => {
               className='border bg-slate-50 p-4 rounded-lg'
             >
               <option value=''>Filter By Price Range-</option>
-              <option value='asc'>Low to High</option>
-              <option value='desc'>High to Low</option>
+              <option value='asc'>Lowest Gap</option>
+              <option value='desc'>Highest Gap to Low</option>
             </select>
 
           </div>

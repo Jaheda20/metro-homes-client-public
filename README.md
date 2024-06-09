@@ -1,8 +1,22 @@
-# React + Vite
+# Metro Homes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Metro Homes, your one-stop destination for buying, selling, and renting properties.
 
-Currently, two official plugins are available:
+## Admin Credentials
+- Username: henrik@gmail.com
+- Password: A@a1234
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Site URL
+[Visit Metro Homes at- ]
+
+## Features
+- Search for properties by location, price, and type.
+- View detailed information, including images and descriptions, for each property.
+- Save favorite properties to your wishlist for later viewing.
+- Make offers on properties you're interested in.
+- Leave reviews and ratings for properties you've visited.
+- View your own added properties as an agent.
+- Monitor and manage offers received for your properties as an agent.
+- Secure login using email/password or social login.
+- Real-time payment processing for property purchases.
+- Accessible from desktop, tablet, and mobile devices.
