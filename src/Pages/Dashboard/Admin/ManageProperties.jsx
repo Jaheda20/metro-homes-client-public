@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import PropertyDataRow from "../../../Components/Table/PropertyDataRow";
+import { Helmet } from "react-helmet-async";
 
 const ManageProperties = () => {
     const axiosSecure = useAxiosSecure();
@@ -20,6 +21,9 @@ const ManageProperties = () => {
     )
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || Manage Properties</title>
+            </Helmet>
             <h2 className="text-2xl font-semibold my-10">Manage Properties: ({properties.length})</h2>
             <div className='container mx-auto px-4 sm:px-8'>
                 

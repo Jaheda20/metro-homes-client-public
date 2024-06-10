@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 
 const SignUp = () => {
@@ -62,6 +63,9 @@ const SignUp = () => {
 
     return (
         <div className="h-screen bg-[url('https://i.ibb.co/4MX0gPt/photo-1524026986132-000404263b59-q-80-w-1470-auto-format-fit-crop-ixlib-rb-4-0.jpg')] bg-cover bg-no-repeat bg-gray-800 bg-blend-overlay flex flex-col md:flex-row-reverse items-center justify-center">
+            <Helmet>
+                <title>Metro Homes || Sign Up</title>
+            </Helmet>
             <div className="bg-[url('https://i.ibb.co/4MX0gPt/photo-1524026986132-000404263b59-q-80-w-1470-auto-format-fit-crop-ixlib-rb-4-0.jpg')] w-full md:w-5/6 h-full md:h-5/6 bg-cover bg-no-repeat  py-5 flex flex-col md:flex-row-reverse items-center justify-around">
 
                 <div className="flex items-center gap-2">

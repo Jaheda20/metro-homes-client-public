@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import usePayment from "../../../Hooks/usePayment";
+import { Helmet } from "react-helmet-async";
 
 const PropertyBought = () => {
     const { user } = useAuth();
@@ -26,6 +27,9 @@ const PropertyBought = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || My Bought Property</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold my-10">Bought Properties : ({offers.length})</h1>
             <div className="grid md:grid-cols-3 gap-4">
                 {

@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 // import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const AddProperty = () => {
@@ -80,6 +81,9 @@ const AddProperty = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || Add Property</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold my-8">Add A New Property</h1>
             <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
                 <form onSubmit={handleSubmit}>

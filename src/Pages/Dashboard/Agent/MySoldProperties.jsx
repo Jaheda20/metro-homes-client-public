@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SoldDataRow from "../../../Components/Table/SoldDataRow";
+import { Helmet } from "react-helmet-async";
 
 const MySoldProperties = () => {
 
@@ -28,10 +29,13 @@ const MySoldProperties = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Metro Homes || My Sold Properties</title>
+      </Helmet>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl my-10 font-semibold">Total Sold: ({soldProperties.length}) </h1>
-        <h3 className="font-semibold ">Total Revenue ($): 
-        <span className="text-blue-700"> {totalPrice}</span>
+        <h3 className="font-semibold ">Total Revenue ($):
+          <span className="text-blue-700"> {totalPrice}</span>
         </h3>
 
       </div>

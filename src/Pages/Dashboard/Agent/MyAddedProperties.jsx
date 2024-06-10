@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const MyAddedProperties = () => {
 
@@ -62,6 +63,9 @@ const MyAddedProperties = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || My Added Properties</title>
+            </Helmet>
             <h2 className="text-2xl font-semibold my-8">My listings: ({properties.length})
             </h2>
             <div className="grid md:grid-cols-3">

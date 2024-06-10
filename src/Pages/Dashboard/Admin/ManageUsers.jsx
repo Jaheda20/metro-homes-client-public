@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import UserDataRow from "../../../Components/Table/UserDataRow";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -20,6 +21,9 @@ const ManageUsers = () => {
     
     return (
         <div className='container mx-auto px-4 sm:px-8'>
+        <Helmet>
+                <title>Metro Homes || Manage Users</title>
+            </Helmet>
         <h1 className="text-3xl font-semibold">Total Users: {users.length}</h1>
         <div className='py-8'>
           <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>

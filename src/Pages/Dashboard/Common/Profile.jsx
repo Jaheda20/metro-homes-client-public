@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../Hooks/useAuth'
 import useRole from '../../../Hooks/useRole'
 
@@ -15,7 +16,9 @@ const Profile = () => {
 
   return (
     <div className='flex justify-center items-center h-screen'>
-      
+      <Helmet>
+                <title>Metro Homes || My Profile</title>
+            </Helmet>
       <div className='bg-white shadow-lg rounded-2xl md:w-3/5'>
         <img
           alt='profile'

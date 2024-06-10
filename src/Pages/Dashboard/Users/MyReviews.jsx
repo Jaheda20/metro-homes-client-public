@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const MyReviews = () => {
     const { user } = useAuth();
@@ -57,6 +58,9 @@ const MyReviews = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || My Reviews</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold my-10">My reviews: ({reviews.length})</h1>
             <div className="grid md:grid-cols-3 gap-4">
                 {

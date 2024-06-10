@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { MdOutlineVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Wishlist = () => {
 
@@ -27,6 +28,9 @@ const Wishlist = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || My Wishlist</title>
+            </Helmet>
             <h2 className="text-2xl font-semibold my-10">Added properties: ({wishlists.length})
             </h2>
 

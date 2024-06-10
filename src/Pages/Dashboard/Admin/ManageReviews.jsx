@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageReviews = () => {
@@ -57,6 +58,9 @@ const ManageReviews = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || Manage Reviews</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold my-8">All Reviews: ({reviews.length})</h1>
             <div className="grid">
                 {

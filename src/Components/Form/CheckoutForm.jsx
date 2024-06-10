@@ -6,7 +6,6 @@ import useAuth from '../../Hooks/useAuth';
 import { ImSpinner9 } from "react-icons/im";
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import Swal from 'sweetalert2';
 
 
 const CheckoutForm = ({ offer }) => {
@@ -33,22 +32,6 @@ const CheckoutForm = ({ offer }) => {
 
         }
     }, [axiosSecure, offer?.amount])
-
-    // useEffect(() => {
-
-    //     if (offer?.amount && offer?.amount > 1) {
-    //         getClientSecret({ price: offer?.amount })
-    //     }
-
-    // }, [offer, offer?.amount])
-
-
-
-    // const getClientSecret = async price => {
-    //     const { data } = await axiosSecure.post(`/create-payment-intent`, price)
-    //     console.log('clientSecret from server---', data)
-    //     setClientSecret(data.clientSecret)
-    // }
 
     const handleSubmit = async (event) => {
         event.preventDefault();

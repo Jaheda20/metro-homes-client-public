@@ -4,6 +4,7 @@ import Map from "../../Components/Map/Map";
 import { FiMapPin } from "react-icons/fi";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AllProperties = () => {
 
@@ -52,6 +53,10 @@ const AllProperties = () => {
 
     return (
         <div className="my-20">
+            <Helmet>
+                <title>Metro Homes || All Properties</title>
+            </Helmet>
+            
             <h2 className="text-3xl font-semibold mb-8">Homes for Sale</h2>
             
            <div className="flex items-center justify-between">

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -19,12 +20,12 @@ const Login = () => {
         handleSubmit,
         reset,
         formState: { errors },
-      } = useForm()
+    } = useForm()
 
-    const onSubmit = async (data) =>{
-        try{
+    const onSubmit = async (data) => {
+        try {
             setLoading(true);
-            await signIn (data.email, data.password)
+            await signIn(data.email, data.password)
             reset()
             Swal.fire({
                 position: 'center',
@@ -35,16 +36,19 @@ const Login = () => {
             });
             navigate(from);
         }
-        catch(err){
+        catch (err) {
             console.log(err.message)
             toast.error(err.message)
-            setLoading(false)           
-        }       
+            setLoading(false)
+        }
     }
 
 
     return (
         <div className="h-screen bg-[url('https://i.ibb.co/y66v0t2/photo-1448630360428-65456885c650-q-80-w-1467-auto-format-fit-crop-ixlib-rb-4-0.jpg')] bg-cover bg-no-repeat bg-gray-400 bg-blend-overlay flex flex-col md:flex-row-reverse items-center justify-center">
+            <Helmet>
+                <title>Metro Homes || Login</title>
+            </Helmet>
             <div className="bg-[url('https://i.ibb.co/y66v0t2/photo-1448630360428-65456885c650-q-80-w-1467-auto-format-fit-crop-ixlib-rb-4-0.jpg')] w-full md:w-5/6 h-full md:h-5/6 bg-cover bg-no-repeat bg-gray-800 bg-blend-overlay py-5 flex flex-col md:flex-row items-center justify-around">
 
                 <div className="flex items-center gap-2">
@@ -54,10 +58,10 @@ const Login = () => {
 
                 <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
                     <h1 className="text-2xl font-bold text-center">Login</h1>
-                    <form onSubmit = {handleSubmit(onSubmit)} className="space-y-6">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                         <div className="space-y-1 text-sm">
                             <label htmlFor="username" className="block dark:text-gray-600">Email</label>
-                            <input type="email" name="email"  placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" {...register("email", { required: true })} />
+                            <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" {...register("email", { required: true })} />
                             {errors.email && <span>This field is required</span>}
                         </div>
                         <div className="space-y-1 text-sm">
@@ -84,9 +88,9 @@ const Login = () => {
                     </div> */}
                     <SocialLogin></SocialLogin>
                     <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don't have an account?
-                    <Link to="/signup" className="underline text-blue-800">Sign up
-                    </Link>
-                         
+                        <Link to="/signup" className="underline text-blue-800">Sign up
+                        </Link>
+
                     </p>
                 </div>
             </div>

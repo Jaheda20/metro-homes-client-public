@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const UpdateProperty = () => {
     const { user } = useAuth();
@@ -75,6 +76,9 @@ const UpdateProperty = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Metro Homes || Update Property</title>
+            </Helmet>
             <h2 className="text-3xl font-semibold mt-10 mb-4">Update Property Info : {property._id}</h2>
             <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
                 <form onSubmit={handleSubmit} className="container flex flex-col mx-auto space-y-12">
