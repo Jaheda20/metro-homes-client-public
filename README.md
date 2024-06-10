@@ -3,8 +3,8 @@
 Welcome to Metro Homes, your one-stop destination for buying, selling, and renting properties.
 
 ## Admin Credentials
-- Username: henrik@gmail.com
-- Password: A@a1234
+- Username: tilda@gmail.com
+- Password: A#a1234
 
 ## Live Site URL
 [Visit Metro Homes at- ]
