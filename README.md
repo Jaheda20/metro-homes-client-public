@@ -7,7 +7,7 @@ Welcome to Metro Homes, your one-stop destination for buying, selling, and renti
 - Password: A#a1234
 
 ## Live Site URL
-[Visit Metro Homes at- ]
+[Visit Metro Homes at- https://relaxed-gingersnap-f8453c.netlify.app ]
 
 ## Features
 - Search for properties by location, price, and type.
