@@ -32,7 +32,7 @@ Make sure you have Git, Node.js, and npm (Node Package Manager) installed on you
 
 # Cloning the Repository
 1. Open your terminal.
-2. Enter the following command to clone the repository: git clone https://github.com/your-username/metro-homes.git
+2. Enter the following command to clone the repository: git clone https://github.com/Jaheda20/metro-homes-client-public.git
 3. Navigate to the project directory: cd metro-homes
 
 # Installing Dependencies
