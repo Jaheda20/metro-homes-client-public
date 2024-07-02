@@ -1,6 +1,6 @@
 # Metro Homes
 
-Welcome to Metro Homes, your one-stop destination for buying, selling, and renting properties.
+Welcome to Metro Homes, your one-stop destination for buying, selling, and renting properties. As a property owner, you can add your properties for sell and rent through our agents. On the other hand, clients can choose and buy their desired property from this website.
 
 ## Admin Credentials
 - Username: tilda@gmail.com
