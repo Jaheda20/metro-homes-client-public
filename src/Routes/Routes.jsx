@@ -27,6 +27,7 @@ import Payment from "../Components/Dashboard/User/Payment";
 import MySoldProperties from "../Pages/Dashboard/Agent/MySoldProperties";
 import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
+import AdvertiseProperties from "../Pages/Dashboard/Admin/AdvertiseProperties";
 
 const router = createBrowserRouter([
     {
@@ -121,6 +122,15 @@ const router = createBrowserRouter([
                     </AdminRoute>
                 </PrivateRoute>
             },
+            {
+                path: "advertiseProperties",
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <AdvertiseProperties></AdvertiseProperties>
+                    </AdminRoute>
+                </PrivateRoute>
+            },
+
             {
                 path: "myReviews",
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>

@@ -11,7 +11,6 @@ import { Helmet } from "react-helmet-async";
 
 
 const SignUp = () => {
-    // const axiosPublic = useAxiosPublic();
     const { signUp, setLoading, updateUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
