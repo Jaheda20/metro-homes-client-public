@@ -1,6 +1,6 @@
 # Metro Homes
 
-Welcome to Metro Homes, your one-stop destination for buying, selling, and renting properties.
+Welcome to Metro Homes, your one-stop destination for buying, selling, and renting properties. As a property owner, you can add your properties for sell and rent through our agents. On the other hand, clients can choose and buy their desired property from this website.
 
 ## Admin Credentials
 - Username: tilda@gmail.com
@@ -20,3 +20,52 @@ Welcome to Metro Homes, your one-stop destination for buying, selling, and renti
 - Secure login using email/password or social login.
 - Real-time payment processing for property purchases.
 - Accessible from desktop, tablet, and mobile devices.
+
+## Tools Used
+Html, tailwind css, javascript, reactjs, swiper slider, daisy UI, mamba ui, react leaflet, firebase, react awsome reveal, axios, react toastify, react datepicker, react icons, react hot toast, node js, mongodb, express js
+
+## Getting Started
+Follow these steps to clone and run the project locally.
+
+# Prerequisites
+Make sure you have Git, Node.js, and npm (Node Package Manager) installed on your computer.
+
+# Cloning the Repository
+1. Open your terminal.
+2. Enter the following command to clone the repository: git clone https://github.com/Jaheda20/metro-homes-client-public.git
+3. Navigate to the project directory: cd metro-homes
+
+# Installing Dependencies
+Frontend
+1. Go to the frontend directory: cd frontend
+2. Install the required dependencies: npm install
+
+Backend
+1. Go to the backend directory: cd backend
+2. Install the required dependencies: npm install
+3. Setting Up Environment Variables
+4. Create a .env file in the backend directory and add the following variables:
+MONGODB_URI=your_mongodb_connection_string
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+FIREBASE_PROJECT_ID=your_firebase_project_id
+FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+FIREBASE_APP_ID=your_firebase_app_id
+PAYMENT_GATEWAY_API_KEY=your_payment_gateway_api_key
+5. Replace the placeholder text with your actual credentials.
+
+# Running the Project
+Frontend
+1. Make sure you are in the frontend directory: cd frontend
+2. Start the development server: npm start
+3. Open your web browser and go to http://localhost:3000 to view the frontend.
+
+Backend
+1. Make sure you are in the backend directory: cd backend
+2. Start the backend server: npm start
+3. The backend server will be running on http://localhost:5000.
+
+# Additional Information
+For the application to work properly, ensure that both the frontend and backend servers are running simultaneously.
+
