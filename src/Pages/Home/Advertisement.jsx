@@ -26,7 +26,7 @@ const Advertisement = () => {
             <h1 className="text-4xl font-semibold mt-20 mb-8 text-center">Newly Listed Homes in Sweden</h1>
             
 
-            <div className="mb-10 md:mb-40 max-w-7xl mx-auto w-full ">
+            <div className=" max-w-7xl mx-auto w-full ">
 
                 <div className="mt-10 p-8">
                     <Swiper
@@ -58,7 +58,7 @@ const Advertisement = () => {
                         className="mySwiper"
                     >
                         {
-                            properties.slice(0, 9).map((property, index) => (
+                            properties.slice(0, 6).map((property, index) => (
                                 <SwiperSlide key={index}>
                                     <div className="card bg-base-100 shadow-xl hover:scale-110">
                                         <div className="p-4 relative md:h-52 mb-4">

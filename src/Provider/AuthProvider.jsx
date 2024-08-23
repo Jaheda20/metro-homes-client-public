@@ -3,6 +3,8 @@ import { createContext, useEffect, useState } from "react";
 import { app } from "../Firebase/firebase.config";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import axios from "axios";
+import PropTypes from 'prop-types';
+
 
 
 export const AuthContext = createContext(null);
@@ -104,3 +106,4 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
+

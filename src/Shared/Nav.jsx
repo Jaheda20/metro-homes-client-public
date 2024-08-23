@@ -9,7 +9,6 @@ import { useState } from 'react';
 import AgentModal from '../Components/Modal/AgentModal';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
-import useRole from '../Hooks/useRole';
 
 
 const Nav = () => {
