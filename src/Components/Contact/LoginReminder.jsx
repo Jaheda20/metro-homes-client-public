@@ -4,7 +4,7 @@ const LoginReminder = () => {
     return (
         <div className="flex flex-col md:flex-row shadow-xl mt-6 mb-28 rounded-xl p-8 bg-gray-50">
             <div className="md:w-2/3">
-                <img src="https://i.ibb.co/p3VVZLf/woman-working-on-laptop-computer.jpg" alt="" />
+                <img src="https://www.mashvisor.com/blog/wp-content/uploads/2019/03/How-to-Buy-a-House-Without-a-Realtor-as-a-First-Time-Investor.jpg" alt="" />
             </div>
 
             <div className="flex flex-col items-start justify-center my-10 px-10 md:w-1/3">

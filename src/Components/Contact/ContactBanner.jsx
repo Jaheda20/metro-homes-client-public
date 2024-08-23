@@ -1,7 +1,7 @@
 
 const ContactBanner = () => {
     return (
-        <div className="hero min-h-screen relative mt-4 rounded-xl" style={{ backgroundImage: 'linear-gradient(to top, rgba(0,0,0,1), rgba(211, 210, 211, 0.2)), url(https://i.ibb.co/LnPZdZm/635800035990997245-Thinkstock-Photos-475902405-2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="hero min-h-screen relative mt-4 rounded-xl" style={{ backgroundImage: 'linear-gradient(to top, rgba(0,0,0,1), rgba(211, 210, 211, 0.2)), url(https://laurenalane.com/wp-content/uploads/2024/07/PROS-AND-CONS-OF-MOVING-BEFORE-YOU-SELL-1536x1024.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             
             <div className="hero-content text-center text-white">
                 <div className="max-w-2xl">

@@ -2,23 +2,47 @@ import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { FaAd } from "react-icons/fa";
+import { useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
-const AdvertiseDataRow = ({property, refetch}) => {
+const AdvertiseDataRow = ({ property, refetch }) => {
+    
+    const axiosPublic = useAxiosPublic();
 
-    const axiosSecure = useAxiosSecure();
+    // const axiosSecure = useAxiosSecure();
+    const [advertised, setAdvertised] = useState(false);
 
     const { mutateAsync } = useMutation({
         mutationFn: async () => {
-            const { data } = await axiosSecure.put(`/property/advertise/${property?._id}`)
-            return data
+            console.log('attempting to load data ...')
+            const { data } = await axiosPublic.put(`/property/advertise/${property?._id}`)
+            console.log('server response',data)
+            return data            
         },
+        
         onSuccess: data => {
             refetch()
             console.log(data)
+            setAdvertised(true)
             toast.success('Property is advertised')
         },
     })
+
+    
+
+    const handleAdvertise = async () => {
+        try {
+            await mutateAsync()
+
+        }
+        catch (err) {
+            console.error(err.message)
+            toast.error(err.message)
+        }
+    }
+
+    
 
     return (
         <tr>
@@ -28,14 +52,14 @@ const AdvertiseDataRow = ({property, refetch}) => {
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 <p className='text-gray-900 whitespace-no-wrap'>{property?.title}</p>
             </td>
-            
+
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 <p className='text-gray-900 whitespace-no-wrap'>{property?.min_price}- {property?.max_price}</p>
             </td>
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 {property?.agent.name}
             </td>
-            
+
             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                 {
                     property?.status ? (
@@ -45,33 +69,14 @@ const AdvertiseDataRow = ({property, refetch}) => {
 
             </td>
             <td>
-                <button className="btn bg-transparent">
-                <FaAd className="text-green-800" size={32}/>
+                <button 
+                onClick={handleAdvertise} 
+                className="btn bg-transparent"
+                disabled={advertised}
+                title={advertised ? 'Already Advertised' : 'Advertise Property'}>
+                    <FaAd className="text-green-800" size={32} />
                 </button>
             </td>
-            {/* <td>
-                {
-                    property?.status === 'Rejected' ? (<p className="text-red-700 bg-yellow-300 text-center py-1 rounded-xl"> Rejected </p>)
-                        :
-                        (<>
-                            <div className="tooltip" data-tip="Verify">
-                                <button onClick={handleVerify} className="btn "><RiVerifiedBadgeFill className="text-blue-700" size={20} />
-                                </button>
-                            </div>
-
-
-                            <div className="tooltip" data-tip="Reject">
-                                <button onClick={handleReject} className="btn "><GiCancel className="text-red-700" size={20} /></button>
-                            </div>
-                        </>
-
-                        )
-                }
-            </td> */}
-
-
-            
-
 
         </tr>
     );
