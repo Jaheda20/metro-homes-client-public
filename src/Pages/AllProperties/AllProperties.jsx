@@ -100,7 +100,7 @@ const AllProperties = () => {
                     {
                         properties.map(property => <div key={property._id}>
                             <div className="card card-side bg-base-100 shadow-xl mb-4">
-                                <figure className="relative"><img src={property.image} alt="image" className="w-96 p-2 " /></figure>
+                                <figure className="relative w-1/3"><img src={property.image} alt="image" className=" p-2 " /></figure>
                                 <p className="md:hidden absolute top-10 left-8 bg-white p-2 px-4 bg-opacity-80 text-black font-bold rounded-2xl">{property.status}</p>
                                 <div className="card-body">
                                     <div className="flex justify-between ">

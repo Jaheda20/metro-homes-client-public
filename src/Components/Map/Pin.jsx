@@ -1,4 +1,4 @@
-import { FiMapPin } from "react-icons/fi";
+import { FaLocationDot } from "react-icons/fa6";
 import { Marker, Popup } from "react-leaflet";
 
 const Pin = ({ properties }) => {
@@ -12,10 +12,8 @@ const Pin = ({ properties }) => {
                             <div className="flex flex-col items-center space-y-0">
                                 <h3 className="font-semibold mb-0">{property.title}</h3>
                                 <p className="text-sm">${property.min_price} - ${property.max_price}</p>
-                                <p className="text-sm flex items-center"><FiMapPin className="mr-1" />{property.location}</p>
+                                <p className="text-sm flex items-center"><FaLocationDot className="mr-1" />{property.location}</p>
                             </div>
-
-
 
                         </div>
                     </Popup>
