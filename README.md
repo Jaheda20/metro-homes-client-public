@@ -9,6 +9,9 @@ Welcome to Metro Homes, your one-stop destination for buying, selling, and renti
 ## Live Site URL
 [Visit Metro Homes at- https://relaxed-gingersnap-f8453c.netlify.app ]
 
+## Github Repository for Backend
+https://github.com/Jaheda20/metro-homes-server-public.git
+
 ## Features
 ** Common Features: 
 - Search for properties by location, price, and type
